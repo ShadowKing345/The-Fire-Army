@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=y": {"model": "firearmy:block_fire_log"},
+    "axis=z": {"model": "firearmy:block_fire_log", "x": 90},
+    "axis=x": {"model": "firearmy:block_fire_log", "x": 90, "y": 90},
+    "axis=none": {"model": "firearmy:block_fire_log"}
+  }
+}

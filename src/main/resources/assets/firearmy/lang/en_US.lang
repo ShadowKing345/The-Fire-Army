@@ -1,0 +1,9 @@
+itemGroup.firearmytab=The Fire Army
+
+tile.block_dev.name=Dev Blocks
+tile.block_fire_flower.name=Fire Flowers
+tile.block_fire_log.name=Fire Tree Logs
+tile.block_fire_leaf.name=Fire Tree Leaves
+tile.block_fire_sapling.name=Fire Tree Sapling
+
+item.item_dev.name=Dev Items

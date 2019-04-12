@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "stage=0": { "model": "firearmy:block_fire_sapling" },
+    "stage=1": { "model": "firearmy:block_fire_sapling" }
+  }
+}

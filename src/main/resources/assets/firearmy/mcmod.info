@@ -1,0 +1,16 @@
+[
+{
+  "modid": "firearmy",
+  "name": "The Fire Army",
+  "description": "Shall the army of fire burn forever.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Shadowprince345"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
