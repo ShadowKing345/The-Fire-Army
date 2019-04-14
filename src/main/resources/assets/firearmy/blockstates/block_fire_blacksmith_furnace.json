@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "burning=false,facing=north": { "model": "firearmy:block_fire_blacksmith_furnace"},
+    "burning=false,facing=east": { "model": "firearmy:block_fire_blacksmith_furnace", "y": 90 },
+    "burning=false,facing=west": { "model": "firearmy:block_fire_blacksmith_furnace", "y": 270 },
+    "burning=false,facing=south": { "model": "firearmy:block_fire_blacksmith_furnace", "y": 180 },
+    "burning=true,facing=north": { "model": "firearmy:block_fire_blacksmith_furnace_lit"},
+    "burning=true,facing=east": { "model": "firearmy:block_fire_blacksmith_furnace_lit", "y": 90 },
+    "burning=true,facing=west": { "model": "firearmy:block_fire_blacksmith_furnace_lit", "y": 270 },
+    "burning=true,facing=south": { "model": "firearmy:block_fire_blacksmith_furnace_lit", "y": 180 }
+  }
+}

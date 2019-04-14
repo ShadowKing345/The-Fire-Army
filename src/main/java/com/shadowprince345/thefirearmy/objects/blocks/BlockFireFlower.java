@@ -1,5 +1,7 @@
 package com.shadowprince345.thefirearmy.objects.blocks;
 
+import com.shadowprince345.thefirearmy.objects.init.Blocks;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,11 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BlockFireFlower extends BlockBushBase implements IShearable {
-
-    public BlockFireFlower() {
-        super("block_fire_flower");
-    }
+public class BlockFireFlower extends BlockBush implements IShearable {
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SFS",
+    "sss"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone",
+      "data": 0
+    },
+    "F": {
+      "item": "firearmy:block_fire_flower"
+    },
+    "s": {
+      "item": "firearmy:block_fire_slab",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "firearmy:block_fire_blacksmith_furnace",
+    "count": 1,
+    "data": 0
+  }
+}

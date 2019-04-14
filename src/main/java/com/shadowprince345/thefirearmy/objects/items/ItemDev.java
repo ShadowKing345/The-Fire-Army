@@ -1,10 +1,6 @@
 package com.shadowprince345.thefirearmy.objects.items;
 
-import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
+import net.minecraft.item.Item;
 
-public class ItemDev extends ItemBase {
-    public ItemDev(String registryName) {
-        super(registryName);
-        setCreativeTab(Tabs.tab);
-    }
+public class ItemDev extends Item {
 }

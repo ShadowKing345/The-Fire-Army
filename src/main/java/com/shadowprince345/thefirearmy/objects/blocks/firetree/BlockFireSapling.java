@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.objects.blocks.firetree;
 
-import com.shadowprince345.thefirearmy.objects.blocks.BlockBushBase;
-import com.shadowprince345.thefirearmy.objects.blocks.Blocks;
+import com.shadowprince345.thefirearmy.objects.init.Blocks;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
@@ -16,11 +16,10 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import java.util.Random;
 
-public class BlockFireSapling extends BlockBushBase implements IGrowable{
+public class BlockFireSapling extends BlockBush implements IGrowable{
     private static PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
 
     public BlockFireSapling() {
-        super("block_fire_sapling");
         this.setDefaultState(getBlockState().getBaseState().withProperty(STAGE, 0));
         setSoundType(SoundType.GLASS);
     }

@@ -1,0 +1,8 @@
+{
+  "parent": "block/half_slab",
+  "textures": {
+    "top": "firearmy:blocks/block_fire_plank",
+    "bottom": "firearmy:blocks/block_fire_plank",
+    "side": "firearmy:blocks/block_fire_plank"
+  }
+}
