@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "half=bottom": { "model": "firearmy:block_fire_plank" },
-    "half=top": { "model": "firearmy:block_fire_plank" }
-  }
-}

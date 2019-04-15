@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.objects.creativetab;
 
-import com.shadowprince345.thefirearmy.objects.init.Blocks;
+import com.shadowprince345.thefirearmy.init.Blocks;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

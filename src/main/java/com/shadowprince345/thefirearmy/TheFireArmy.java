@@ -12,12 +12,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;
 
-import static com.shadowprince345.thefirearmy.Main.*;
+import static com.shadowprince345.thefirearmy.TheFireArmy.*;
 
 @Mod(modid = MOD_ID, name = NAME, version = VERSION)
-public class Main {
+public class TheFireArmy {
     @Mod.Instance
-    public static Main instance;
+    public static TheFireArmy instance;
 
     @SidedProxy(clientSide = References.CLIENT_SIDE, serverSide = References.SERVER_SIDE)
     public static ServerProxy proxy;

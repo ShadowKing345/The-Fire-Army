@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.objects.init;
+package com.shadowprince345.thefirearmy.init;
 
 import com.shadowprince345.thefirearmy.objects.items.ItemDev;
 import com.shadowprince345.thefirearmy.utils.RegistryEventHandler;

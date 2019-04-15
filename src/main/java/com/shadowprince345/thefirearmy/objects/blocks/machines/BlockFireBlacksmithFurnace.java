@@ -1,10 +1,10 @@
-package com.shadowprince345.thefirearmy.objects.blocks.machines.fireblacksmithfurnace;
+package com.shadowprince345.thefirearmy.objects.blocks.machines;
 
-import com.shadowprince345.thefirearmy.Main;
+import com.shadowprince345.thefirearmy.objects.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.utils.GuiHandler;
 import com.shadowprince345.thefirearmy.utils.References;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -28,7 +28,7 @@ import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 
-public class BlockFireBlacksmithFurnace extends Block implements ITileEntityProvider {
+public class BlockFireBlacksmithFurnace extends Block {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool BURNING = PropertyBool.create("burning");
@@ -55,8 +55,13 @@ public class BlockFireBlacksmithFurnace extends Block implements ITileEntityProv
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote)
-            playerIn.openGui(Main.instance, References.GUI_FIRE_BLACKSMITH_FURNACE, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        if(!worldIn.isRemote){
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+
+            if(tileEntity instanceof TileEntityFireBlacksmithFurnace)
+                GuiHandler.open(playerIn, References.GUI_FIRE_BLACKSMITH_FURNACE, pos.getX(), pos.getY(), pos.getZ());
+        }
+
 
         return !playerIn.isSneaking();
     }
@@ -98,10 +103,14 @@ public class BlockFireBlacksmithFurnace extends Block implements ITileEntityProv
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
+    @Override
+    public boolean hasTileEntity() {
+        return true;
+    }
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileEntityFireBlacksmithFurnace();
     }
 

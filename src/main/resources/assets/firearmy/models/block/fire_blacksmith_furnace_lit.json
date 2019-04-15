@@ -1,0 +1,6 @@
+{
+	"parent": "firearmy:block/fire_blacksmith_furnace",
+	"textures": {
+		"2": "blocks/furnace_front_on"
+	}
+}

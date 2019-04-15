@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.objects.blocks.firetree;
 
-import com.shadowprince345.thefirearmy.objects.init.Blocks;
+import com.shadowprince345.thefirearmy.init.Blocks;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;

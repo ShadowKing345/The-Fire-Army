@@ -1,13 +1,13 @@
 itemGroup.firearmytab=The Fire Army
 
 tile.block_dev.name=Dev Blocks
-tile.block_fire_flower.name=Fire Flowers
-tile.block_fire_log.name=Fire Tree Logs
-tile.block_fire_leaf.name=Fire Tree Leaves
-tile.block_fire_sapling.name=Fire Tree Saplings
-tile.block_fire_plank.name=Fire Tree Planks
-tile.block_fire_slab.name=Fire Tree Slabs
-tile.block_fire_slab_double.name=Fire Tree Double Slabs
-tile.block_fire_blacksmith_furnace.name=Fire Blacksmith's Furnace
+tile.fire_flower.name=Fire Flowers
+tile.fire_log.name=Fire Tree Logs
+tile.fire_leaf.name=Fire Tree Leaves
+tile.fire_sapling.name=Fire Tree Saplings
+tile.fire_plank.name=Fire Tree Planks
+tile.fire_slab.name=Fire Tree Slabs
+tile.fire_slab_double.name=Fire Tree Double Slabs
+tile.fire_blacksmith_furnace.name=Fire Blacksmith's Furnace
 
 item.item_dev.name=Dev Items

@@ -1,5 +1,6 @@
-package com.shadowprince345.thefirearmy.objects.blocks.machines.fireblacksmithfurnace;
+package com.shadowprince345.thefirearmy.objects.gui;
 
+import com.shadowprince345.thefirearmy.objects.tiles.TileEntityFireBlacksmithFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -16,9 +17,9 @@ import javax.annotation.Nonnull;
 
 public class ContainerFireBlacksmithFurnace extends Container {
 
-    private TileEntityFireBlacksmithFurnace furnace;
-    private InventoryPlayer player;
-    private int currentFuleLevel = -1;
+    public final TileEntityFireBlacksmithFurnace furnace;
+    public final InventoryPlayer player;
+    public int currentFuelLevel = -1;
 
     public ContainerFireBlacksmithFurnace(InventoryPlayer player, TileEntityFireBlacksmithFurnace furnace) {
         this.furnace = furnace;
@@ -43,7 +44,7 @@ public class ContainerFireBlacksmithFurnace extends Container {
     }
 
     private void listenerHelper(IContainerListener listener) {
-        listener.sendWindowProperty(this, 0, Math.min(255, furnace.currentBurnTime <= 0 ? 0 : furnace.currentBurnTime * 255 / furnace.burnTime));
+        listener.sendWindowProperty(this, 0, furnace.fuelLevel);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class ContainerFireBlacksmithFurnace extends Container {
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data) {
         if(id == 0)
-            currentFuleLevel = data;
+            currentFuelLevel = data;
         else
             super.updateProgressBar(id, data);
     }

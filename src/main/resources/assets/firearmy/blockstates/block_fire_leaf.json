@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "check_decay=false,decayable=false": { "model": "firearmy:block_fire_leaf" },
-    "check_decay=false,decayable=true": { "model": "firearmy:block_fire_leaf" },
-    "check_decay=true,decayable=false": { "model": "firearmy:block_fire_leaf" },
-    "check_decay=true,decayable=true": { "model": "firearmy:block_fire_leaf" }
-  }
-}

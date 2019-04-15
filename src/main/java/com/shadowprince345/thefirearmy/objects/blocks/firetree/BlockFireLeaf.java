@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.objects.blocks.firetree;
 
+import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
-import com.shadowprince345.thefirearmy.objects.init.Blocks;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;

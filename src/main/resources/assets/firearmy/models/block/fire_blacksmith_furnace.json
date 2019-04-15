@@ -3,7 +3,7 @@
 	"textures": {
 		"0": "firearmy:blocks/block_fire_plank",
 		"1": "blocks/bedrock",
-		"2": "blocks/furnace_front_on",
+		"2": "blocks/furnace_front_off",
 		"3": "blocks/iron_block",
 		"4": "blocks/furnace_side",
 		"5": "blocks/hopper_top",

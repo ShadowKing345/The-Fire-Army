@@ -1,17 +1,20 @@
 package com.shadowprince345.thefirearmy.utils;
 
-import com.shadowprince345.thefirearmy.Main;
+import com.shadowprince345.thefirearmy.TheFireArmy;
+import com.shadowprince345.thefirearmy.init.Blocks;
+import com.shadowprince345.thefirearmy.init.Items;
 import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
-import com.shadowprince345.thefirearmy.objects.init.Blocks;
-import com.shadowprince345.thefirearmy.objects.init.Items;
+import com.shadowprince345.thefirearmy.objects.tiles.TileEntityFireBlacksmithFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber
@@ -53,7 +56,7 @@ public class RegistryEventHandler {
         registryBlock.register(Blocks.blockFireSlab.getSlab());
         registryBlock.register(Blocks.blockFireSlab.getDoubleSlab());
 
-        Main.proxy.registerTileEntity();
+        GameRegistry.registerTileEntity(TileEntityFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"block_fire_blacksmith_furnace"));
     }
 
     @SubscribeEvent
@@ -76,16 +79,16 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void RegisterModels(ModelRegistryEvent event) {
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireFlower), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireLeaf), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireLog), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSapling), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockDev), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireBlacksmithFurnace), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFirePlank), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getSlab()), 0, "inventory");
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireFlower), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireLeaf), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireLog), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSapling), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockDev), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireBlacksmithFurnace), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFirePlank), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getSlab()), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
 
-        Main.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
     }
 }

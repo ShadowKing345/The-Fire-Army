@@ -1,8 +1,10 @@
-package com.shadowprince345.thefirearmy.objects.blocks.machines.fireblacksmithfurnace;
+package com.shadowprince345.thefirearmy.objects.tiles;
 
-import com.shadowprince345.thefirearmy.Main;
+import com.shadowprince345.thefirearmy.objects.blocks.machines.BlockFireBlacksmithFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
@@ -19,15 +21,13 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
     private ItemStackHandler handler;
     public String customName = "";
 
-    public boolean isBurning = false;
+    public boolean isBurning = true;
 
-    public int burnTime = 0;
+    public int burnTime = 500;
     public int currentBurnTime = 0;
+    public int fuelLevel = 0;
 
     public TileEntityFireBlacksmithFurnace() {
-        burnTime = 100;
-        currentBurnTime = 100;
-        isBurning = true;
         customName = "";
         handler = new ItemStackHandler(11);
     }
@@ -36,22 +36,17 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
     public void update() {
         if (world.isRemote) return;
 
-        Main.logger.error(currentBurnTime);
-        if (isBurning) --currentBurnTime;
-        if (currentBurnTime <= 0) {
-            currentBurnTime = 100;
+        if (isBurning) {
+            --currentBurnTime;
+            if (currentBurnTime <= 0)
+                currentBurnTime = burnTime;
         }
-
-//            if (!handler.getStackInSlot(0).isEmpty() && !isBurning) {
-//                burnTime = TileEntityFurnace.getItemBurnTime(handler.extractItem(0, 1, false));
-//                currentBurnTime = burnTime;
-//                isBurning = true;
-//            }
 
         world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockFireBlacksmithFurnace.BURNING, isBurning));
 
-     //   markDirty();
+        fuelLevel = (int) (currentBurnTime / (double) burnTime * 100f);
 
+        markDirty();
     }
 
     public static boolean isItemFuel(ItemStack stack){
@@ -69,14 +64,6 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
     }
 
     @Override
-    public void onLoad() {
-        if(world.isRemote)
-            world.tickableTileEntities.remove(this);
-
-        validate();
-    }
-
-    @Override
     public void readFromNBT(NBTTagCompound compound) {
         customName = compound.getString("customName");
         NBTTagCompound nbtTagCompound = new NBTTagCompound();
@@ -85,6 +72,30 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
         isBurning = compound.getBoolean("isBurning");
         currentBurnTime = compound.getInteger("currentBurnTime");
         burnTime = compound.getInteger("burnTime");
+    }
+
+    @Override
+    public void onLoad() {
+        if(world.isRemote)
+            world.tickableTileEntities.remove(this);
+
+        validate();
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return writeToNBT(new NBTTagCompound());
+    }
+
+    @Nullable
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(pos, 0, writeToNBT(new NBTTagCompound()));
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        readFromNBT(pkt.getNbtCompound());
     }
 
     @Override
