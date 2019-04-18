@@ -10,41 +10,71 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
 public class ContainerFireBlacksmithFurnace extends Container {
-
+    private ItemStackHandler handler;
     public final TileEntityFireBlacksmithFurnace furnace;
-    public final InventoryPlayer player;
-    public int currentFuelLevel = -1;
+    public final InventoryPlayer inventoryPlayer;
+    public int fuelLevel = -1;
+    public int progressLevel = -1;
 
-    public ContainerFireBlacksmithFurnace(InventoryPlayer player, TileEntityFireBlacksmithFurnace furnace) {
+    public ContainerFireBlacksmithFurnace(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace) {
         this.furnace = furnace;
-        this.player = player;
+        this.inventoryPlayer = inventoryPlayer;
 
-        IItemHandler handler = furnace.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        handler = (ItemStackHandler) furnace.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-        addSlotToContainer(new FuelSlotItemHandler(handler, 0, 17, 31));
+        addSlotToContainer(new SlotItemHandler(handler, 10, 130, 31));
+        addSlotToContainer(new SlotItemHandler(handler, 0, 17, 31){
+            @Override
+            public boolean isItemValid(@Nonnull ItemStack stack) {
+                return TileEntityFireBlacksmithFurnace.isItemFuel(stack);
+        }});
 
         for (int j = 0; j < 3; j++)
             for (int i = 0; i < 3; i++)
                 addSlotToContainer(new SlotItemHandler(handler, i + j * 3 + 1, i * 18 + 54 + i, j * 18 + 12 + j));
 
-        addSlotToContainer(new OutputSlotItemHandler(handler, 10, 130, 31));
-
         for (int j = 0; j < 3; j++)
             for (int i = 0; i < 9; i++)
-                addSlotToContainer(new Slot(this.player, i + j * 9 + 9, 18 * i + 8, (18 * j) + 78));
+                addSlotToContainer(new Slot(this.inventoryPlayer, i + j * 9 + 9, 18 * i + 8, (18 * j) + 78));
 
         for (int i = 0; i < 9; i++)
-            addSlotToContainer(new Slot(this.player, i, 18 * i + 8, 136));
+            addSlotToContainer(new Slot(this.inventoryPlayer, i, 18 * i + 8, 136));
+    }
+
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+        Slot slot = inventorySlots.get(index);
+
+        if(slot != null && slot.getHasStack()){
+            ItemStack stack = slot.getStack();
+            ItemStack oldStack = stack;
+
+            if(index < 10) {
+                if (!mergeItemStack(stack, 2, inventorySlots.size(), true))
+                    return ItemStack.EMPTY;
+            }else if(!mergeItemStack(stack, 0, 10, false))
+                return ItemStack.EMPTY;
+
+            if (stack.isEmpty())
+                slot.putStack(ItemStack.EMPTY);
+            else
+                slot.onSlotChanged();
+
+            return oldStack;
+        }
+
+        return ItemStack.EMPTY;
     }
 
     private void listenerHelper(IContainerListener listener) {
         listener.sendWindowProperty(this, 0, furnace.fuelLevel);
+        listener.sendWindowProperty(this, 1, furnace.progressLevel);
     }
 
     @Override
@@ -67,7 +97,9 @@ public class ContainerFireBlacksmithFurnace extends Container {
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data) {
         if(id == 0)
-            currentFuelLevel = data;
+            fuelLevel = data;
+        if(id == 1)
+            progressLevel = data;
         else
             super.updateProgressBar(id, data);
     }
@@ -75,28 +107,5 @@ public class ContainerFireBlacksmithFurnace extends Container {
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
         return !playerIn.isSpectator();
-    }
-
-    private class FuelSlotItemHandler extends SlotItemHandler {
-
-        public FuelSlotItemHandler(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
-            super(itemHandler, index, xPosition, yPosition);
-        }
-
-        @Override
-        public boolean isItemValid(@Nonnull ItemStack stack) {
-            return TileEntityFireBlacksmithFurnace.isItemFuel(stack);
-        }
-    }
-
-    private class OutputSlotItemHandler extends SlotItemHandler {
-        public OutputSlotItemHandler(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
-            super(itemHandler, index, xPosition, yPosition);
-        }
-
-        @Override
-        public boolean isItemValid(@Nonnull ItemStack stack) {
-            return false;
-        }
     }
 }

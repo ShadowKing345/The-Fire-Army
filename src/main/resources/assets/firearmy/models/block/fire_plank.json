@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "firearmy:blocks/block_fire_plank"
+    "all": "firearmy:blocks/fire_plank"
   }
 }

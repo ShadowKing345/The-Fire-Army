@@ -3,16 +3,16 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "firearmy:block_fire_slab",
+      "item": "firearmy:fire_slab",
       "data": 0
     },
     {
-      "item": "firearmy:block_fire_slab",
+      "item": "firearmy:fire_slab",
       "data": 0
     }
   ],
   "result": {
-    "item": "firearmy:block_fire_plank",
+    "item": "firearmy:fire_plank",
     "count": 1
   }
 }

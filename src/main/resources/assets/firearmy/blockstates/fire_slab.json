@@ -1,6 +1,6 @@
 {
   "variants": {
-    "half=top": { "model": "firearmy:fire_slab" , "x": 180 },
-    "half=bottom": { "model": "firearmy:fire_slab"}
+    "half=top": { "model": "firearmy:fire_slab_upper"},
+    "half=bottom": { "model": "firearmy:fire_slab_lower"}
   }
 }

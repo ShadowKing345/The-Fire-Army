@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -90,5 +91,9 @@ public class RegistryEventHandler {
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
 
         TheFireArmy.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
+    }
+
+    @SubscribeEvent
+    public static void RegisterRecepies(RegistryEvent.Register<IRecipe> event){
     }
 }

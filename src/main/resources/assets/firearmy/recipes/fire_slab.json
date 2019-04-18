@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "firearmy:block_fire_plank"
+      "item": "firearmy:fire_plank"
     }
   },
   "result": {
-    "item": "firearmy:block_fire_slab",
+    "item": "firearmy:fire_slab",
     "data": 0,
     "count": 6
   }

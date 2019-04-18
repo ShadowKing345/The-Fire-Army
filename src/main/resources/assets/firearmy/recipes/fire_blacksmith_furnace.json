@@ -11,15 +11,15 @@
       "data": 0
     },
     "F": {
-      "item": "firearmy:block_fire_flower"
+      "item": "firearmy:fire_flower"
     },
     "s": {
-      "item": "firearmy:block_fire_slab",
+      "item": "firearmy:fire_slab",
       "data": 0
     }
   },
   "result": {
-    "item": "firearmy:block_fire_blacksmith_furnace",
+    "item": "firearmy:fire_blacksmith_furnace",
     "count": 1,
     "data": 0
   }

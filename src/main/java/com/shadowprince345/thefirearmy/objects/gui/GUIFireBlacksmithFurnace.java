@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 public class GUIFireBlacksmithFurnace extends GuiContainer {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(TheFireArmy.getModId() + ":textures/gui/gui_fire_blacksmith_furnace.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_furnace.png");
     private ContainerFireBlacksmithFurnace container;
 
     public GUIFireBlacksmithFurnace(ContainerFireBlacksmithFurnace c) {
@@ -19,6 +19,14 @@ public class GUIFireBlacksmithFurnace extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+    }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        renderHoveredToolTip(mouseX, mouseY);
+
     }
 
     @Override
@@ -27,7 +35,10 @@ public class GUIFireBlacksmithFurnace extends GuiContainer {
         mc.getTextureManager().bindTexture(TEXTURE);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-        int pixels = (int) (container.currentFuelLevel / 100f * 16f);
-        drawTexturedModalRect(guiLeft + 17, guiTop + 32 - pixels, 176, 16 - pixels, 16, 16);
+        int fuelPixels = 13 - Math.min((int) (container.fuelLevel / 100f * 12f), 13);
+        drawTexturedModalRect(guiLeft + 17, guiTop + 16 + fuelPixels, 176, fuelPixels, 16, 13 - fuelPixels);
+        int progressPixels = (int) (container.progressLevel / 100f * 16f);
+        drawTexturedModalRect(guiLeft + 112, guiTop + 33, 176, 13, progressPixels, 12);
+
     }
 }

@@ -1,6 +1,7 @@
 package com.shadowprince345.thefirearmy;
 
 import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
+import com.shadowprince345.thefirearmy.objects.tiles.FireBlacksmithFurnaceRecipes;
 import com.shadowprince345.thefirearmy.proxy.ServerProxy;
 import com.shadowprince345.thefirearmy.utils.GuiHandler;
 import com.shadowprince345.thefirearmy.utils.References;
@@ -31,11 +32,13 @@ public class TheFireArmy {
     public static void preInit(FMLPreInitializationEvent e){
         logger = e.getModLog();
         Tabs.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+
     }
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent e){
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+        FireBlacksmithFurnaceRecipes.INSTANCE.addDefaultRecipes();
     }
 
     public static void postInit(FMLPostInitializationEvent e){
