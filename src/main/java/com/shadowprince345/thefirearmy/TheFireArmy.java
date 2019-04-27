@@ -5,6 +5,7 @@ import com.shadowprince345.thefirearmy.objects.tiles.FireBlacksmithFurnaceRecipe
 import com.shadowprince345.thefirearmy.proxy.ServerProxy;
 import com.shadowprince345.thefirearmy.utils.GuiHandler;
 import com.shadowprince345.thefirearmy.utils.References;
+import com.shadowprince345.thefirearmy.utils.RegistryEventHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -38,6 +39,7 @@ public class TheFireArmy {
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent e){
+        RegistryEventHandler.registerOreDic();
         FireBlacksmithFurnaceRecipes.INSTANCE.addDefaultRecipes();
     }
 

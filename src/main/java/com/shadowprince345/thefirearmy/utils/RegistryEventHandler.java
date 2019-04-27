@@ -4,6 +4,7 @@ import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;
 import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
+import com.shadowprince345.thefirearmy.objects.tiles.TileDev;
 import com.shadowprince345.thefirearmy.objects.tiles.TileEntityFireBlacksmithFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -13,9 +14,11 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber
@@ -56,8 +59,11 @@ public class RegistryEventHandler {
         registryBlock.register(Blocks.blockFirePlank);
         registryBlock.register(Blocks.blockFireSlab.getSlab());
         registryBlock.register(Blocks.blockFireSlab.getDoubleSlab());
+        registryBlock.register(Blocks.blockFloorDrum);
+        registryBlock.register(Blocks.blockFireFlowerCrop);
 
         GameRegistry.registerTileEntity(TileEntityFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"block_fire_blacksmith_furnace"));
+        GameRegistry.registerTileEntity(TileDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
     }
 
     @SubscribeEvent
@@ -74,12 +80,17 @@ public class RegistryEventHandler {
         registry.register(withName(Blocks.blockFirePlank));
         registry.register(new ItemSlab(Blocks.blockFireSlab.getSlab(), Blocks.blockFireSlab.getSlab(), Blocks.blockFireSlab.getDoubleSlab()).setUnlocalizedName(Blocks.blockFireSlab.getSlab().getUnlocalizedName()).setRegistryName(Blocks.blockFireSlab.getSlab().getRegistryName()));
         registry.register(withName(Blocks.blockFireSlab.getDoubleSlab()));
+        registry.register(withName(Blocks.blockFloorDrum));
+        registry.register(withName(Blocks.blockFireFlowerCrop));
 
         registry.register(Items.itemDev);
+        registry.register(Items.itemGoldPlate);
+        registry.register(Items.itemIronPlate);
+        registry.register(Items.itemFireFlowerSeed);
     }
 
     @SubscribeEvent
-    public static void RegisterModels(ModelRegistryEvent event) {
+    public static void registerModels(ModelRegistryEvent event) {
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireFlower), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireLeaf), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireLog), 0, "inventory");
@@ -89,11 +100,22 @@ public class RegistryEventHandler {
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFirePlank), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getSlab()), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFloorDrum), 0, "inventory");
 
         TheFireArmy.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.itemGoldPlate, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.itemIronPlate, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.itemFireFlowerSeed, 0, "inventory");
+    }
+
+    public static void registerOreDic(){
+        OreDictionary.registerOre("plankWood", Blocks.blockFirePlank);
+        OreDictionary.registerOre("slabWood", Blocks.blockFireSlab.getSlab());
     }
 
     @SubscribeEvent
-    public static void RegisterRecepies(RegistryEvent.Register<IRecipe> event){
+    public static void registerFuel(FurnaceFuelBurnTimeEvent event){
+        if(event.getItemStack().getItem() == Item.getItemFromBlock(Blocks.blockFireFlower))
+            event.setBurnTime(40000);
     }
 }

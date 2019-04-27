@@ -9,5 +9,10 @@ tile.fire_plank.name=Fire Tree Planks
 tile.fire_slab.name=Fire Tree Slabs
 tile.fire_slab_double.name=Fire Tree Double Slabs
 tile.fire_blacksmith_furnace.name=Fire Blacksmith's Furnace
+tile.floor_drum.name=Floor Drum
+tile.fire_flower_crop.name=Clearly an Error in WAILA
 
 item.item_dev.name=Dev Items
+item.gold_plate.name=Gold Plates
+item.iron_plate.name=Iron Plates
+item.fire_flower_seed.name=Fire Flower Seeds
