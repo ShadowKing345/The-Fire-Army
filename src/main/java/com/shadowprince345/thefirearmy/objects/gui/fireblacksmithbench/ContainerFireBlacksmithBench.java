@@ -48,7 +48,7 @@ public class ContainerFireBlacksmithBench extends Container {
             public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
                 FireBlacksmithFurnaceRecipe recipe = craftResult.getRecipe();
 
-                if(recipe != null) {
+                if(recipe != null && !thePlayer.world.isRemote) {
                     this.onCrafting(stack);
                     net.minecraftforge.common.ForgeHooks.setCraftingPlayer(inventoryPlayer.player);
                     NonNullList<ItemStack> nonNullList = NonNullList.withSize(9, ItemStack.EMPTY);
@@ -60,10 +60,8 @@ public class ContainerFireBlacksmithBench extends Container {
 
                         if (!craftingMatrixStack.isEmpty()) {
                             craftingMatrix.extractItem(i, 1, false);
-                            if(!thePlayer.world.isRemote) {
-                                EntityPlayerMP entityPlayerMP = (EntityPlayerMP) thePlayer;
-                                entityPlayerMP.connection.sendPacket(new SPacketSetSlot(windowId, i + 1, craftingMatrix.getStackInSlot(i)));
-                            }
+                            EntityPlayerMP entityPlayerMP = (EntityPlayerMP) thePlayer;
+                            entityPlayerMP.connection.sendPacket(new SPacketSetSlot(windowId, i + 1, craftingMatrix.getStackInSlot(i)));
                             craftingMatrixStack = craftingMatrix.getStackInSlot(i);
                         }
 
@@ -73,14 +71,9 @@ public class ContainerFireBlacksmithBench extends Container {
                             else if (ItemStack.areItemsEqual(craftingMatrixStack, itemStack) && ItemStack.areItemStackTagsEqual(craftingMatrixStack, itemStack)) {
                                 itemStack.grow(craftingMatrixStack.getCount());
                                 craftingMatrix.setStackInSlot(i, itemStack);
-                            }
-                            else if(!inventoryPlayer.addItemStackToInventory(itemStack))
+                            } else if (!inventoryPlayer.addItemStackToInventory(itemStack))
                                 inventoryPlayer.player.dropItem(itemStack, false);
                         }
-                    }
-
-                    if(!thePlayer.world.isRemote){
-                        furnace.decreaseCraftingFuel(recipe);
                     }
                 }
 
