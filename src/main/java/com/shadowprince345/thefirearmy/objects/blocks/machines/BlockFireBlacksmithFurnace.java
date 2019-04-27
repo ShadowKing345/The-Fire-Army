@@ -2,7 +2,6 @@ package com.shadowprince345.thefirearmy.objects.blocks.machines;
 
 import com.shadowprince345.thefirearmy.objects.tiles.TileEntityFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.utils.GuiHandler;
-import com.shadowprince345.thefirearmy.utils.References;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -18,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -42,8 +42,18 @@ public class BlockFireBlacksmithFurnace extends Block {
     }
 
     @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, BURNING);
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (worldIn.isRemote) return !playerIn.isSneaking();
+
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+
+        if (tileEntity instanceof TileEntityFireBlacksmithFurnace) {
+            if(facing == EnumFacing.UP)
+                GuiHandler.open(playerIn, GuiHandler.GUI_FIRE_BLACKSMITH_BENCH, pos.getX(), pos.getY(), pos.getZ());
+            else
+                GuiHandler.open(playerIn, GuiHandler.GUI_FIRE_BLACKSMITH_FURNACE, pos.getX(), pos.getY(), pos.getZ());
+        }
+        return !playerIn.isSneaking();
     }
 
     @Override
@@ -51,17 +61,32 @@ public class BlockFireBlacksmithFurnace extends Block {
         return state.getValue(BURNING) ? 10 : 0;
     }
 
+    @Nullable
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote){
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+        return new AxisAlignedBB(0,0,0,1,1,1);
+    }
 
-            if(tileEntity instanceof TileEntityFireBlacksmithFurnace)
-                GuiHandler.open(playerIn, References.GUI_FIRE_BLACKSMITH_FURNACE, pos.getX(), pos.getY(), pos.getZ());
-        }
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        AxisAlignedBB boundingBox = new AxisAlignedBB(0,0,0,1,0.65,1);
 
+        return boundingBox;
+    }
 
-        return !playerIn.isSneaking();
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING, BURNING);
     }
 
     @Override
@@ -86,26 +111,6 @@ public class BlockFireBlacksmithFurnace extends Block {
         worldIn.setBlockState(pos, getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()));
     }
 
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        super.onBlockAdded(worldIn, pos, state);
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean hasTileEntity() {
-        return true;
-    }
-
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
@@ -119,7 +124,12 @@ public class BlockFireBlacksmithFurnace extends Block {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        IItemHandler handler = worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        IItemHandler handler = worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+
+        for(int slot = 0; slot < handler.getSlots(); slot++)
+            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), handler.getStackInSlot(slot));
+
+        handler = worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
         for(int slot = 0; slot < handler.getSlots(); slot++)
             InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), handler.getStackInSlot(slot));

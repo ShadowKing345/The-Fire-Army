@@ -13,7 +13,42 @@ public class FireBlacksmithFurnaceRecipes {
 
     public static final List<FireBlacksmithFurnaceRecipe> LIST = new ArrayList<>();
 
-    public void add(ItemStack[] array, ItemStack output, int cost, int time){
+    public void addDefaultRecipes() {
+        add(new ItemStack[]{
+                        new ItemStack(Items.IRON_INGOT), new ItemStack(Items.IRON_INGOT)
+                }
+                , new ItemStack(com.shadowprince345.thefirearmy.init.Items.itemIronPlate), 50);
+        add(new ItemStack[]{
+                        new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_INGOT)
+                }
+                , new ItemStack(com.shadowprince345.thefirearmy.init.Items.itemGoldPlate), 50);
+        add(new ItemStack[]{
+                        new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFirePlank), new ItemStack(Items.LEATHER), new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFirePlank),
+                        new ItemStack(com.shadowprince345.thefirearmy.init.Items.itemGoldPlate), new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFireFlower), new ItemStack(com.shadowprince345.thefirearmy.init.Items.itemGoldPlate),
+                        new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFirePlank), new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFirePlank), new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFirePlank)
+                }
+                , new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFloorDrum), 100);
+
+    }
+
+    public boolean isOutput(ItemStack output){
+        return getOutputList(output) != null;
+    }
+
+    public List<FireBlacksmithFurnaceRecipe> getOutputList(ItemStack output){
+        List<FireBlacksmithFurnaceRecipe> result = new ArrayList<>();
+
+        for(FireBlacksmithFurnaceRecipe recipe: LIST){
+            Item item = output.getItem();
+            int meta = !output.getHasSubtypes() && output.isItemStackDamageable() ? 0 : output.getMetadata();
+            if (recipe.output.getItem() == item && recipe.output.getMetadata() == meta)
+                result.add(recipe);
+        }
+
+        return result.isEmpty() ? null : result;
+    }
+
+    public void add(ItemStack[] array, ItemStack output, int cost){
         FireBlacksmithFurnaceRecipe recipe = new FireBlacksmithFurnaceRecipe();
         for(int i = 0; i < array.length; i++) {
             recipe.inputs.set(i, array[i]);
@@ -22,7 +57,16 @@ public class FireBlacksmithFurnaceRecipes {
 
         recipe.output = output;
         recipe.cost = cost;
-        recipe.time = time;
+
+        LIST.add(recipe);
+    }
+
+    public void add(ItemStack input, ItemStack output, int cost, int time){
+        FireBlacksmithFurnaceRecipe recipe = new FireBlacksmithFurnaceRecipe();
+
+        recipe.inputs.set(0, input);
+        recipe.output = output;
+        recipe.cost = cost;
 
         LIST.add(recipe);
     }
@@ -67,12 +111,5 @@ public class FireBlacksmithFurnaceRecipes {
         }
 
         return null;
-    }
-
-    public void addDefaultRecipes() {
-        add(new ItemStack[]{
-                        new ItemStack(Items.IRON_INGOT), new ItemStack(Items.IRON_INGOT)
-                }
-                , new ItemStack(Items.GOLD_INGOT), 20, 300);
     }
 }
