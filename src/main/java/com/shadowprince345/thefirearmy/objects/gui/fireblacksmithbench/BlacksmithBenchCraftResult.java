@@ -3,7 +3,7 @@ package com.shadowprince345.thefirearmy.objects.gui.fireblacksmithbench;
 import com.shadowprince345.thefirearmy.objects.tiles.FireBlacksmithFurnaceRecipe;
 import net.minecraftforge.items.ItemStackHandler;
 
-class BlacksmithBenchCraftResult extends ItemStackHandler {
+public class BlacksmithBenchCraftResult extends ItemStackHandler {
     private FireBlacksmithFurnaceRecipe recipe;
 
     public FireBlacksmithFurnaceRecipe getRecipe() {
