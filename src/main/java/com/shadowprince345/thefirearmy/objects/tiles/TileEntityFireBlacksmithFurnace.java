@@ -177,4 +177,9 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
     public void setCraftingRecipe(FireBlacksmithFurnaceRecipe craftingRecipe) {
         this.craftingRecipe = craftingRecipe;
     }
+
+    @Override
+    public boolean hasFastRenderer() {
+        return true;
+    }
 }

@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -25,6 +26,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class BlockFireBlacksmithFurnace extends Block {
 
@@ -54,6 +56,31 @@ public class BlockFireBlacksmithFurnace extends Block {
                 GuiHandler.open(playerIn, GuiHandler.GUI_FIRE_BLACKSMITH_FURNACE, pos.getX(), pos.getY(), pos.getZ());
         }
         return !playerIn.isSneaking();
+    }
+
+    @Override
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        if(!stateIn.getValue(BURNING)) return;
+
+        EnumFacing facing = stateIn.getValue(FACING);
+        double x = pos.getX() + 0.125;
+        double z = pos.getZ() + 0.125;
+
+        switch (facing) {
+            case NORTH:
+                z += 0.75f;
+            case SOUTH:
+                x += 0.375f;
+                break;
+            case WEST:
+                x += 0.75f;
+            case EAST:
+                z += 0.375f;
+                break;
+            default:
+        }
+
+        worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, pos.getY() + 1.25, z, 0,0,0);
     }
 
     @Override

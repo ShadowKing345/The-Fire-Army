@@ -6,15 +6,16 @@ import com.shadowprince345.thefirearmy.init.Items;
 import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.objects.tiles.TileDev;
 import com.shadowprince345.thefirearmy.objects.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.objects.tiles.render.RendererFireBlackSmithFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -64,6 +65,8 @@ public class RegistryEventHandler {
 
         GameRegistry.registerTileEntity(TileEntityFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"block_fire_blacksmith_furnace"));
         GameRegistry.registerTileEntity(TileDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
+
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFireBlacksmithFurnace.class, new RendererFireBlackSmithFurnace());
     }
 
     @SubscribeEvent
