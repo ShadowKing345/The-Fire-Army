@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -113,12 +114,22 @@ public class RegistryEventHandler {
 
     public static void registerOreDic(){
         OreDictionary.registerOre("plankWood", Blocks.blockFirePlank);
+        OreDictionary.registerOre("logWood", Blocks.blockFireLog);
+        OreDictionary.registerOre("treeSapling", Blocks.blockFireSapling);
+        OreDictionary.registerOre("treeLeaves", Blocks.blockFireLeaf);
         OreDictionary.registerOre("slabWood", Blocks.blockFireSlab.getSlab());
     }
 
     @SubscribeEvent
     public static void registerFuel(FurnaceFuelBurnTimeEvent event){
-        if(event.getItemStack().getItem() == Item.getItemFromBlock(Blocks.blockFireFlower))
+        ItemStack stack = event.getItemStack();
+        if(stack.getItem() == Item.getItemFromBlock(Blocks.blockFireFlower))
             event.setBurnTime(40000);
+        if(stack.getItem() == Item.getItemFromBlock(Blocks.blockFireLog) ||
+                stack.getItem() == Item.getItemFromBlock(Blocks.blockFireLeaf) ||
+                stack.getItem() == Item.getItemFromBlock(Blocks.blockFirePlank))
+            event.setBurnTime(600);
+        if(stack.getItem() == Item.getItemFromBlock(Blocks.blockFireSlab.getSlab()))
+            event.setBurnTime(200);
     }
 }
