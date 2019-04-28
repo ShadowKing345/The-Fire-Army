@@ -16,10 +16,13 @@ public class RendererFireBlackSmithFurnace extends FastTESR<TileEntityFireBlacks
         EntityItem itemEntity = new EntityItem(Minecraft.getMinecraft().world, 0,0,0, ItemStack.EMPTY);
         itemEntity.hoverStart = 0;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
+                ItemStack itemStack = ItemHandlerHelper.copyStackWithSize(te.benchInventory.getStackInSlot((k * 3) + i), 1);
+                if (itemStack.isEmpty())
+                    continue;
 
-                itemEntity.setItem(ItemHandlerHelper.copyStackWithSize(te.benchInventory.getStackInSlot((k * 3) + i), 1));
+                itemEntity.setItem(itemStack);
                 GlStateManager.pushMatrix();
                 {
                     GlStateManager.translate(x + 0.3125f + (0.1875 * i), y + 0.51f, z + 0.3125f + (0.1875 * k));
@@ -28,5 +31,6 @@ public class RendererFireBlackSmithFurnace extends FastTESR<TileEntityFireBlacks
                 }
                 GlStateManager.popMatrix();
             }
+        }
     }
 }
