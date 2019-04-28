@@ -1,5 +1,6 @@
-package com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace;
+package com.shadowprince345.thefirearmy.client.tesr;
 
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

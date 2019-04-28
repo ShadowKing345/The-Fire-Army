@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.client.gui.dev;
+package com.shadowprince345.thefirearmy.inventory;
 
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
 import net.minecraft.entity.player.EntityPlayer;

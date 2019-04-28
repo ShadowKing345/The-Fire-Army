@@ -1,6 +1,6 @@
-package com.shadowprince345.thefirearmy.client.gui.fireblacksmithfurnace;
+package com.shadowprince345.thefirearmy.inventory;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

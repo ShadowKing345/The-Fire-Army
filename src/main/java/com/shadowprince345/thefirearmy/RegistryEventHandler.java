@@ -1,8 +1,8 @@
 package com.shadowprince345.thefirearmy;
 
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
-import com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace.RendererFireBlackSmithFurnace;
-import com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.client.tesr.RendererFireBlackSmithFurnace;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;

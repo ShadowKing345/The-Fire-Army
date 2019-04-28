@@ -1,10 +1,10 @@
-package com.shadowprince345.thefirearmy.client.gui.fireblacksmithbench;
+package com.shadowprince345.thefirearmy.inventory;
 
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.gui.SlotCraftingItemHandler;
 import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipe;
 import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipes;
-import com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -1,17 +1,18 @@
-package com.shadowprince345.thefirearmy.client.gui.fireblacksmithbench;
+package com.shadowprince345.thefirearmy.client.gui;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
+import com.shadowprince345.thefirearmy.inventory.ContainerFireBlacksmithFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class GUIFireBlacksmithBench extends GuiContainer {
-    private static final ResourceLocation texture = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_bench.png");
-    private ContainerFireBlacksmithBench container;
+public class GUIFireBlacksmithFurnace extends GuiContainer {
+    private static final ResourceLocation texture = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_furnace.png");
+    private ContainerFireBlacksmithFurnace container;
 
-    public GUIFireBlacksmithBench(ContainerFireBlacksmithBench c) {
+    public GUIFireBlacksmithFurnace(ContainerFireBlacksmithFurnace c) {
         super(c);
-        container = c;
+        this.container = c;
 
         xSize=176;
         ySize=160;
@@ -32,9 +33,11 @@ public class GUIFireBlacksmithBench extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         mc.getTextureManager().bindTexture(texture);
-        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+        drawTexturedModalRect(guiLeft, guiTop, 0,0, xSize, ySize);
 
         int fuelPixels = 13 - Math.min((int) (container.fuelLevel / 100f * 13f), 13);
-        drawTexturedModalRect(guiLeft + 17 , guiTop + 33 + fuelPixels, 176, fuelPixels, 16, 13 - fuelPixels);
+        drawTexturedModalRect(guiLeft + 67, guiTop + 32 + fuelPixels, 176, fuelPixels, 16, 13 - fuelPixels);
+        int progressPixels = (int) (container.progressLevel / 100f * 16f);
+        drawTexturedModalRect(guiLeft + 85, guiTop + 32, 176, 13, progressPixels, 12);
     }
 }

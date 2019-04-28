@@ -1,7 +1,6 @@
-package com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace;
+package com.shadowprince345.thefirearmy.blocks.tiles;
 
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipe;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBucket;
@@ -46,7 +45,7 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
 
         ItemStack fuel = furnaceInventory.getStackInSlot(2);
         if (!fuel.isEmpty()) {
-            if (TileEntityFurnace.isItemFuel(fuel) && (currentBurnTime <= 0 || currentBurnTime < (craftingRecipe != null ? craftingRecipe.cost : 0))) {
+            if (TileEntityFurnace.isItemFuel(fuel) && (currentBurnTime <= 0 || currentBurnTime < (craftingRecipe != null ? craftingRecipe.getCost() : 0))) {
                 totalBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
                 currentBurnTime += totalBurnTime;
                 if (fuel.getItem() instanceof ItemBucket)
