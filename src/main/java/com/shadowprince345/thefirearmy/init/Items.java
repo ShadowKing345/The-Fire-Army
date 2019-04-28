@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.init;
 
-import com.shadowprince345.thefirearmy.objects.items.ItemDev;
-import com.shadowprince345.thefirearmy.utils.RegistryEventHandler;
+import com.shadowprince345.thefirearmy.RegistryEventHandler;
+import com.shadowprince345.thefirearmy.items.ItemDev;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 

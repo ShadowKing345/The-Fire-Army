@@ -1,0 +1,186 @@
+package com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace;
+
+import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipe;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.items.ItemStackHandler;
+
+import javax.annotation.Nullable;
+
+public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITickable, ICapabilityProvider {
+
+    public ItemStackHandler benchInventory = new ItemStackHandler(9);
+    public ItemStackHandler furnaceInventory = new ItemStackHandler(3);
+    public boolean isBurning = false;
+
+    public int totalProgress = 0;
+    public int progress = 0;
+
+    public int totalBurnTime = 0;
+    public int currentBurnTime = 0;
+
+    public FireBlacksmithFurnaceRecipe craftingRecipe = null;
+
+    @Override
+    public void update() {
+        if (world.isRemote) return;
+
+        isBurning = currentBurnTime > 0;
+        BlockFireBlacksmithFurnace.setBurning(isBurning, world, pos);
+
+        totalProgress = 0;
+
+        ItemStack fuel = furnaceInventory.getStackInSlot(2);
+        if (!fuel.isEmpty()) {
+            if (TileEntityFurnace.isItemFuel(fuel) && (currentBurnTime <= 0 || currentBurnTime < (craftingRecipe != null ? craftingRecipe.cost : 0))) {
+                totalBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
+                currentBurnTime += totalBurnTime;
+                if (fuel.getItem() instanceof ItemBucket)
+                    world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 1, pos.getZ(), new ItemStack(Items.BUCKET)));
+                fuel.shrink(1);
+                furnaceInventory.setStackInSlot(2, fuel);
+                isBurning = true;
+            }
+        }
+
+        furnaceUpdate();
+    }
+
+    private void furnaceUpdate() {
+        ItemStack output = furnaceInventory.getStackInSlot(1);
+        boolean hasOutput = !output.isEmpty();
+
+        if (hasOutput && output.getCount() >= output.getMaxStackSize())
+            return;
+
+        ItemStack recipe = FurnaceRecipes.instance().getSmeltingResult(furnaceInventory.getStackInSlot(0));
+        if (recipe == ItemStack.EMPTY)
+            return;
+
+        if (hasOutput && (recipe.isEmpty() || recipe.getItem() != output.getItem() || recipe.getMetadata() != output.getMetadata()))
+            return;
+
+        totalProgress = 200;
+
+        if (!isBurning) {
+            progress = 0;
+            return;
+        }
+
+        progress++;
+        currentBurnTime--;
+
+        if (progress >= totalProgress) {
+            ItemStack input = furnaceInventory.getStackInSlot(0);
+            input.shrink(1);
+            furnaceInventory.setStackInSlot(0, input);
+
+            if (hasOutput) {
+                output.grow(2);
+                furnaceInventory.setStackInSlot(1, output);
+            } else {
+                furnaceInventory.setStackInSlot(1, ItemHandlerHelper.copyStackWithSize(recipe, 2));
+            }
+
+            progress = 0;
+        }
+
+        markDirty();
+    }
+
+    public void decreaseCraftingFuel(FireBlacksmithFurnaceRecipe recipe) {
+        currentBurnTime -= recipe != null ? recipe.getCost() : 0;
+    }
+
+    public static boolean isItemFuel(ItemStack stack) {
+        return TileEntityFurnace.isItemFuel(stack);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound nbt) {
+        currentBurnTime = nbt.getInteger("current");
+        totalBurnTime = nbt.getInteger("total");
+        isBurning = nbt.getBoolean("burning");
+        progress = nbt.getInteger("progress");
+
+        NBTTagCompound itemsTag = new NBTTagCompound();
+        itemsTag.setTag("Items", nbt.getTagList("benchInventory", Constants.NBT.TAG_COMPOUND));
+        benchInventory.deserializeNBT(itemsTag);
+        itemsTag = new NBTTagCompound();
+        itemsTag.setTag("Items", nbt.getTagList("furnaceInventory", Constants.NBT.TAG_COMPOUND));
+        furnaceInventory.deserializeNBT(itemsTag);
+        super.readFromNBT(nbt);
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+        nbt.setBoolean("burning", isBurning);
+        if (currentBurnTime > 0)
+            nbt.setInteger("current", currentBurnTime);
+        if (totalBurnTime > 0)
+            nbt.setInteger("total", totalBurnTime);
+        if (progress > 0)
+            nbt.setInteger("progress", progress);
+        nbt.setTag("benchInventory", benchInventory.serializeNBT().getTag("Items"));
+        nbt.setTag("furnaceInventory", furnaceInventory.serializeNBT().getTag("Items"));
+        return super.writeToNBT(nbt);
+    }
+
+    @Override
+    public void onLoad() {
+        if (world.isRemote)
+            world.tickableTileEntities.remove(this);
+
+        validate();
+    }
+
+    @Override
+    public void markDirty() {
+        if (world != null)
+            world.markChunkDirty(pos, this);
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            if (facing == EnumFacing.UP)
+                return (T) benchInventory;
+            else
+                return (T) furnaceInventory;
+        }
+        return super.getCapability(capability, facing);
+    }
+
+    public FireBlacksmithFurnaceRecipe getCraftingRecipe() {
+        return craftingRecipe;
+    }
+
+    public void setCraftingRecipe(FireBlacksmithFurnaceRecipe craftingRecipe) {
+        this.craftingRecipe = craftingRecipe;
+    }
+
+    @Override
+    public boolean hasFastRenderer() {
+        return true;
+    }
+}

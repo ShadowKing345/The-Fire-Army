@@ -1,11 +1,9 @@
 package com.shadowprince345.thefirearmy;
 
-import com.shadowprince345.thefirearmy.objects.creativetab.Tabs;
-import com.shadowprince345.thefirearmy.objects.tiles.FireBlacksmithFurnaceRecipes;
+import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipes;
+import com.shadowprince345.thefirearmy.creativetab.Tabs;
+import com.shadowprince345.thefirearmy.gui.GuiHandler;
 import com.shadowprince345.thefirearmy.proxy.ServerProxy;
-import com.shadowprince345.thefirearmy.utils.GuiHandler;
-import com.shadowprince345.thefirearmy.utils.References;
-import com.shadowprince345.thefirearmy.utils.RegistryEventHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

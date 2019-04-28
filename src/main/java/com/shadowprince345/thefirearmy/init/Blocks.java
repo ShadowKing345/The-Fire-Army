@@ -1,15 +1,15 @@
 package com.shadowprince345.thefirearmy.init;
 
-import com.shadowprince345.thefirearmy.objects.blocks.BlockDev;
-import com.shadowprince345.thefirearmy.objects.blocks.BlockFireFlower;
-import com.shadowprince345.thefirearmy.objects.blocks.BlockFireFlowerCrop;
-import com.shadowprince345.thefirearmy.objects.blocks.BlockFloorDrum;
-import com.shadowprince345.thefirearmy.objects.blocks.firetree.BlockFireLeaf;
-import com.shadowprince345.thefirearmy.objects.blocks.firetree.BlockFireLog;
-import com.shadowprince345.thefirearmy.objects.blocks.firetree.BlockFireSapling;
-import com.shadowprince345.thefirearmy.objects.blocks.machines.BlockFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.objects.blocks.slabs.BlockModdedSlab;
-import com.shadowprince345.thefirearmy.utils.RegistryEventHandler;
+import com.shadowprince345.thefirearmy.RegistryEventHandler;
+import com.shadowprince345.thefirearmy.blocks.BlockDev;
+import com.shadowprince345.thefirearmy.blocks.BlockFireFlower;
+import com.shadowprince345.thefirearmy.blocks.BlockFireFlowerCrop;
+import com.shadowprince345.thefirearmy.blocks.BlockFloorDrum;
+import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireLeaf;
+import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireLog;
+import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireSapling;
+import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.slabs.BlockModdedSlab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
