@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.gui.fireblacksmithbench;
+package com.shadowprince345.thefirearmy.client.gui.fireblacksmithbench;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
 import net.minecraft.client.gui.inventory.GuiContainer;

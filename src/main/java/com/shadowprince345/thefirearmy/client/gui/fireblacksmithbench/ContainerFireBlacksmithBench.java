@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.gui.fireblacksmithbench;
+package com.shadowprince345.thefirearmy.client.gui.fireblacksmithbench;
 
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.gui.SlotCraftingItemHandler;

@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.blocks.machines;
 
 import com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace.TileEntityFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.gui.GuiHandler;
+import com.shadowprince345.thefirearmy.client.gui.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;

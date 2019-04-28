@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.blocks;
 
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
-import com.shadowprince345.thefirearmy.gui.GuiHandler;
+import com.shadowprince345.thefirearmy.client.gui.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

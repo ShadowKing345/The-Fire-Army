@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.gui.dev;
+package com.shadowprince345.thefirearmy.client.gui.dev;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
 import net.minecraft.client.gui.inventory.GuiContainer;

@@ -1,14 +1,14 @@
-package com.shadowprince345.thefirearmy.gui;
+package com.shadowprince345.thefirearmy.client.gui;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
 import com.shadowprince345.thefirearmy.blocks.tiles.fireblacksmithfurnace.TileEntityFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.gui.dev.ContainerDev;
-import com.shadowprince345.thefirearmy.gui.dev.GUIDev;
-import com.shadowprince345.thefirearmy.gui.fireblacksmithbench.ContainerFireBlacksmithBench;
-import com.shadowprince345.thefirearmy.gui.fireblacksmithbench.GUIFireBlacksmithBench;
-import com.shadowprince345.thefirearmy.gui.fireblacksmithfurnace.ContainerFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.gui.fireblacksmithfurnace.GUIFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.client.gui.dev.ContainerDev;
+import com.shadowprince345.thefirearmy.client.gui.dev.GUIDev;
+import com.shadowprince345.thefirearmy.client.gui.fireblacksmithbench.ContainerFireBlacksmithBench;
+import com.shadowprince345.thefirearmy.client.gui.fireblacksmithbench.GUIFireBlacksmithBench;
+import com.shadowprince345.thefirearmy.client.gui.fireblacksmithfurnace.ContainerFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.client.gui.fireblacksmithfurnace.GUIFireBlacksmithFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

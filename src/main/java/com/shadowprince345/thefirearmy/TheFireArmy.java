@@ -1,9 +1,8 @@
 package com.shadowprince345.thefirearmy;
 
 import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipes;
+import com.shadowprince345.thefirearmy.client.gui.GuiHandler;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
-import com.shadowprince345.thefirearmy.gui.GuiHandler;
-import com.shadowprince345.thefirearmy.proxy.ServerProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -20,7 +19,7 @@ public class TheFireArmy {
     public static TheFireArmy instance;
 
     @SidedProxy(clientSide = References.CLIENT_SIDE, serverSide = References.SERVER_SIDE)
-    public static ServerProxy proxy;
+    public static CommonProxy proxy;
 
     public static Logger logger;
     static final String MOD_ID = "firearmy";

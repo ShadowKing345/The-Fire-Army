@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.proxy;
+package com.shadowprince345.thefirearmy.client;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
