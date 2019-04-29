@@ -102,8 +102,8 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
         markDirty();
     }
 
-    public void decreaseCraftingFuel(IFBBRecipe recipe) {
-        currentBurnTime -= recipe != null ? recipe.getCost() : 0;
+    public void decreaseCraftingFuel() {
+        currentBurnTime -= craftingRecipe != null ? craftingRecipe.getCost() : 0;
     }
 
     public static boolean isItemFuel(ItemStack stack) {

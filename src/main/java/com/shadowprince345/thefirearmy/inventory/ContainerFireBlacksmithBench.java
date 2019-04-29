@@ -75,6 +75,8 @@ public class ContainerFireBlacksmithBench extends Container {
                                 inventoryPlayer.player.dropItem(itemStack, false);
                         }
                     }
+
+                    furnace.decreaseCraftingFuel();
                 }
 
                 return stack;
