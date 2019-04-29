@@ -1,16 +1,16 @@
 package com.shadowprince345.thefirearmy.inventory;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipe;
+import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class BlacksmithBenchCraftResult extends ItemStackHandler {
-    private FireBlacksmithFurnaceRecipe recipe;
+    private IFBBRecipe recipe;
 
-    public FireBlacksmithFurnaceRecipe getRecipe() {
+    public IFBBRecipe getRecipe() {
         return recipe;
     }
 
-    public void setRecipe(FireBlacksmithFurnaceRecipe recipe) {
+    public void setRecipe(IFBBRecipe recipe) {
         this.recipe = recipe;
     }
 }

@@ -5,10 +5,11 @@ import net.minecraft.util.NonNullList;
 
 import java.util.List;
 
-public interface IFireBlacksmithBenchRecipe {
+public interface IFBBRecipe {
     List<ItemStack> getInputs();
-    ItemStack getOutput(NonNullList<ItemStack> inputs);
+    ItemStack getOutput();
     default int getCost(){
         return 0;
     }
+    boolean matches(NonNullList<ItemStack> inputs);
 }

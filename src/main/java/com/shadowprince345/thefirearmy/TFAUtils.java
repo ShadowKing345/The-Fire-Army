@@ -1,5 +1,5 @@
 package com.shadowprince345.thefirearmy;
 
-public class TheFireArmyUtils {
+public class TFAUtils {
 
 }

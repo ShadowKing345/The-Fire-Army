@@ -2,9 +2,9 @@ package com.shadowprince345.thefirearmy.inventory;
 
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.gui.SlotCraftingItemHandler;
-import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipe;
-import com.shadowprince345.thefirearmy.blocks.tiles.FireBlacksmithFurnaceRecipes;
+import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -38,7 +38,7 @@ public class ContainerFireBlacksmithBench extends Container {
             @Override
             protected void onCrafting(ItemStack stack) {
                 super.onCrafting(stack);
-                FireBlacksmithFurnaceRecipe recipe = craftResult.getRecipe();
+                IFBBRecipe recipe = craftResult.getRecipe();
 
                 if (recipe != null)
                     craftResult.setRecipe(recipe);
@@ -46,7 +46,7 @@ public class ContainerFireBlacksmithBench extends Container {
 
             @Override
             public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
-                FireBlacksmithFurnaceRecipe recipe = craftResult.getRecipe();
+                IFBBRecipe recipe = craftResult.getRecipe();
 
                 if(recipe != null && !thePlayer.world.isRemote) {
                     this.onCrafting(stack);
@@ -198,14 +198,9 @@ public class ContainerFireBlacksmithBench extends Container {
     private void slotChangedCraftingGrid(World world, EntityPlayer player, ItemHandlerCrafting craftingMatrix, BlacksmithBenchCraftResult craftResult) {
         if(world.isRemote) return;
 
-        ItemStack[] array = new ItemStack[9];
-        for (int i = 0; i < 9; i++) {
-            array[i] = craftingMatrix.getStackInSlot(i);
-        }
-
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         ItemStack output = ItemStack.EMPTY;
-        FireBlacksmithFurnaceRecipe recipe = FireBlacksmithFurnaceRecipes.INSTANCE.getRecipe(array);
+        IFBBRecipe recipe = FBBRecipesManager.instance.findRecipe(craftingMatrix);
         if(recipe != null){
             craftResult.setRecipe(recipe);
             furnace.setCraftingRecipe(recipe);

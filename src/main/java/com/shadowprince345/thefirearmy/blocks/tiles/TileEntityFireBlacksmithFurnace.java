@@ -1,5 +1,6 @@
 package com.shadowprince345.thefirearmy.blocks.tiles;
 
+import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
@@ -32,7 +33,7 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
     public int totalBurnTime = 0;
     public int currentBurnTime = 0;
 
-    public FireBlacksmithFurnaceRecipe craftingRecipe = null;
+    public IFBBRecipe craftingRecipe = null;
 
     @Override
     public void update() {
@@ -101,7 +102,7 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
         markDirty();
     }
 
-    public void decreaseCraftingFuel(FireBlacksmithFurnaceRecipe recipe) {
+    public void decreaseCraftingFuel(IFBBRecipe recipe) {
         currentBurnTime -= recipe != null ? recipe.getCost() : 0;
     }
 
@@ -170,11 +171,11 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
         return super.getCapability(capability, facing);
     }
 
-    public FireBlacksmithFurnaceRecipe getCraftingRecipe() {
+    public IFBBRecipe getCraftingRecipe() {
         return craftingRecipe;
     }
 
-    public void setCraftingRecipe(FireBlacksmithFurnaceRecipe craftingRecipe) {
+    public void setCraftingRecipe(IFBBRecipe craftingRecipe) {
         this.craftingRecipe = craftingRecipe;
     }
 
