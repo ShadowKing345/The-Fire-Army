@@ -27,7 +27,6 @@ public class FBBRecipeWrapper extends BlankRecipeWrapper {
 
     @Override
     public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-
     }
 
     @Override

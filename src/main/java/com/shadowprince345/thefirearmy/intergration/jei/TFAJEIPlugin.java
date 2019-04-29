@@ -23,7 +23,7 @@ public class TFAJEIPlugin implements IModPlugin {
 
         registry.handleRecipes(IFBBRecipe.class, FBBRecipeWrapper::new, RecipeCategoriesUid.FBB);
 
-        registry.addRecipes(FBBRecipesManager.instance.getRecipes());
+        registry.addRecipes(FBBRecipesManager.instance.getRecipes(), RecipeCategoriesUid.FBB);
         registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireBlacksmithFurnace),RecipeCategoriesUid.FBB);
     }
 
