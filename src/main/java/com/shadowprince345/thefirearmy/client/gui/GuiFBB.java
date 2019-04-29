@@ -6,11 +6,11 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class GUIFireBlacksmithBench extends GuiContainer {
-    private static final ResourceLocation texture = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_bench.png");
+public class GuiFBB extends GuiContainer {
+    public static final ResourceLocation texture = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_bench.png");
     private ContainerFireBlacksmithBench container;
 
-    public GUIFireBlacksmithBench(ContainerFireBlacksmithBench c) {
+    public GuiFBB(ContainerFireBlacksmithBench c) {
         super(c);
         container = c;
 

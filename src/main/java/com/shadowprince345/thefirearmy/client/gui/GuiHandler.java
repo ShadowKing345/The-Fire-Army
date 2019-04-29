@@ -44,7 +44,7 @@ public class GuiHandler implements IGuiHandler {
             case GUI_DEV:
                 return new GUIDev(new ContainerDev(player.inventory, (TileDev) world.getTileEntity(new BlockPos(x,y,z))));
             case GUI_FIRE_BLACKSMITH_BENCH:
-                return new GUIFireBlacksmithBench(new ContainerFireBlacksmithBench(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+                return new GuiFBB(new ContainerFireBlacksmithBench(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             case GUI_FIRE_BLACKSMITH_FURNACE:
                 return new GUIFireBlacksmithFurnace(new ContainerFireBlacksmithFurnace(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             default:

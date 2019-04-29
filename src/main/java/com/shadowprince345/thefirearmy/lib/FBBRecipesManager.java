@@ -19,6 +19,7 @@ import java.util.List;
 
 public class FBBRecipesManager {
     public static final FBBRecipesManager instance = new FBBRecipesManager();
+    public static final FBBRecipeRegistry FBB_REGISTRY = new FBBRecipeRegistry();
 
     private static List<IFBBRecipe> theList = new ArrayList<>();
 
