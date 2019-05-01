@@ -16,5 +16,6 @@ item.item_dev.name=Dev Items
 item.gold_plate.name=Gold Plates
 item.iron_plate.name=Iron Plates
 item.fire_flower_seed.name=Fire Flower Seeds
+item.fire_wood_sword.name=Fire Wood Sword
 
 gui.firearmy.fireblacksmithbench.name=Fire Blacksmith Bench

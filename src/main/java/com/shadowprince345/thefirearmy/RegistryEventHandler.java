@@ -90,6 +90,7 @@ public class RegistryEventHandler {
         registry.register(Items.itemGoldPlate);
         registry.register(Items.itemIronPlate);
         registry.register(Items.itemFireFlowerSeed);
+        registry.register(Items.fireSword);
     }
 
     @SubscribeEvent
@@ -109,6 +110,7 @@ public class RegistryEventHandler {
         TheFireArmy.proxy.registerItemRenderer(Items.itemGoldPlate, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemIronPlate, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemFireFlowerSeed, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.fireSword, 0, "inventory");
     }
 
     public static void registerOreDic(){

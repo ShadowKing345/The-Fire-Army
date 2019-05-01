@@ -4,6 +4,7 @@ import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.recipe.FBBRecipeApi;
 import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
+import com.shadowprince345.thefirearmy.init.Items;
 import com.sun.istack.internal.NotNull;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,7 +20,6 @@ import java.util.List;
 
 public class FBBRecipesManager {
     public static final FBBRecipesManager instance = new FBBRecipesManager();
-    public static final FBBRecipeRegistry FBB_REGISTRY = new FBBRecipeRegistry();
 
     private static List<IFBBRecipe> theList = new ArrayList<>();
 
@@ -55,9 +55,14 @@ public class FBBRecipesManager {
         add("firearmy:fire_plank,minecraft:leather,firearmy:fire_plank," +
                         "firearmy:gold_plate, firearmy:fire_flower, firearmy:gold_plate," +
                         "firearmy:fire_plank, firearmy:fire_plank, firearmy:fire_plank",
-                new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFloorDrum), 100);
+                new ItemStack(com.shadowprince345.thefirearmy.init.Blocks.blockFloorDrum), 600);
 
         add("firearmy:fire_flower", new ItemStack(com.shadowprince345.thefirearmy.init.Items.itemFireFlowerSeed), 200);
+
+        add("minecraft:air, firearmy:fire_plank, minecraft:air,"+
+                "minecraft:air, firearmy:fire_plank, minecraft:air," +
+                "minecraft:air, minecraft:blaze_rod, minecraft:air",
+                new ItemStack(Items.fireSword), 200);
     }
 
     @NotNull
@@ -78,7 +83,10 @@ public class FBBRecipesManager {
                 TheFireArmy.logger.error("Unknown Item: '" + s + "'. Skipping recipe");
                 return;
             }else{
-                ingredients.set(i, stack);
+                if(stack.getItem() == net.minecraft.init.Items.AIR)
+                    ingredients.set(i, ItemStack.EMPTY);
+                else
+                    ingredients.set(i, stack);
             }
         }
 
