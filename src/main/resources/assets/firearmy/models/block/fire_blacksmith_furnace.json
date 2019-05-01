@@ -3,8 +3,8 @@
 	"textures": {
 		"0": "firearmy:blocks/fire_plank",
 		"1": "firearmy:blocks/fire_blacksmith_furnace_top",
-		"2": "firearmy:blocks/fire_blacksmith_furnace_front_off",
-		"3": "firearmy:blocks/fire_blacksmith_furnace_side",
+		"2": "firearmy:blocks/fire_furnace_front_off",
+		"3": "firearmy:blocks/fire_furnace_side",
 		"particle": "firearmy:blocks/fire_plank"
 	},
 	"elements": [

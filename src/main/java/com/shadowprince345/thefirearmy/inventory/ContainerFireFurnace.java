@@ -1,12 +1,13 @@
 package com.shadowprince345.thefirearmy.inventory;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -15,29 +16,28 @@ import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
-public class ContainerFBF extends Container {
+public class ContainerFireFurnace extends Container {
     private ItemStackHandler furnaceHandler;
-    public TileEntityFireBlacksmithFurnace furnace;
+    public TileEntityFireFurnace furnace;
     public InventoryPlayer inventoryPlayer;
     public int fuelLevel = -1;
     public int progressLevel = -1;
 
-    public ContainerFBF(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace){
+    public ContainerFireFurnace(InventoryPlayer inventoryPlayer, TileEntityFireFurnace furnace){
         this.inventoryPlayer = inventoryPlayer;
         this.furnace = furnace;
-
         furnaceHandler = furnace.furnaceInventory;
 
-        addSlotToContainer(new SlotItemHandler(furnaceHandler, 2, 67, 50){
+        addSlotToContainer(new SlotItemHandler(furnaceHandler, 0, 67, 50){
             @Override
             public boolean isItemValid(@Nonnull ItemStack stack) {
                 return TileEntityFurnace.isItemFuel(stack);
             }});
-        addSlotToContainer(new SlotItemHandler(furnaceHandler, 0, 67, 11));
-        addSlotToContainer(new SlotItemHandler(furnaceHandler, 1, 105, 30){
+        addSlotToContainer(new SlotItemHandler(furnaceHandler, 1, 67, 11));
+        addSlotToContainer(new SlotItemHandler(furnaceHandler, 2, 105, 30){
             @Override
             public boolean isItemValid(@Nonnull ItemStack stack) {
-                return TileEntityFurnace.isItemFuel(stack);
+                return FurnaceRecipes.instance().getSmeltingResult(furnaceHandler.getStackInSlot(1)) != ItemStack.EMPTY;
             }});
 
         for (int j = 0; j < 3; j++)

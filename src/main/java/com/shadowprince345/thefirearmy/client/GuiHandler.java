@@ -1,11 +1,17 @@
-package com.shadowprince345.thefirearmy.client.gui;
+package com.shadowprince345.thefirearmy.client;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
+import com.shadowprince345.thefirearmy.client.gui.GUIDev;
+import com.shadowprince345.thefirearmy.client.gui.GuiFBB;
+import com.shadowprince345.thefirearmy.client.gui.GuiFBF;
+import com.shadowprince345.thefirearmy.client.gui.GuiFireFurnace;
 import com.shadowprince345.thefirearmy.inventory.ContainerDev;
 import com.shadowprince345.thefirearmy.inventory.ContainerFBB;
 import com.shadowprince345.thefirearmy.inventory.ContainerFBF;
+import com.shadowprince345.thefirearmy.inventory.ContainerFireFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -17,6 +23,7 @@ public class GuiHandler implements IGuiHandler {
     public static final int GUI_DEV = -1;
     public static final int GUI_FIRE_BLACKSMITH_BENCH = 0;
     public static final int GUI_FIRE_BLACKSMITH_FURNACE = 1;
+    public static final int GUI_FIRE_FURNACE = 2;
 
     public static void open(EntityPlayer player, int id, int x, int y, int z){
         player.openGui(TheFireArmy.instance, id, player.world, x, y, z);
@@ -32,6 +39,8 @@ public class GuiHandler implements IGuiHandler {
                 return new ContainerFBB(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case GUI_FIRE_BLACKSMITH_FURNACE:
                 return new ContainerFBF(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+            case GUI_FIRE_FURNACE:
+                return new ContainerFireFurnace(player.inventory, (TileEntityFireFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -47,6 +56,8 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiFBB(new ContainerFBB(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             case GUI_FIRE_BLACKSMITH_FURNACE:
                 return new GuiFBF(new ContainerFBF(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+            case GUI_FIRE_FURNACE:
+                return new GuiFireFurnace(new ContainerFireFurnace(player.inventory, (TileEntityFireFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             default:
                 return null;
         }

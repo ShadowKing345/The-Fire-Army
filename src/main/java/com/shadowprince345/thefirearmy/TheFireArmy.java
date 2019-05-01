@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy;
 
-import com.shadowprince345.thefirearmy.client.gui.GuiHandler;
+import com.shadowprince345.thefirearmy.client.GuiHandler;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
 import net.minecraftforge.fml.common.Mod;

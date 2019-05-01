@@ -9,6 +9,7 @@ import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireLeaf;
 import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireLog;
 import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireSapling;
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.machines.BlockFireFurnace;
 import com.shadowprince345.thefirearmy.blocks.slabs.BlockModdedSlab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -25,4 +26,5 @@ public class Blocks {
     public static BlockModdedSlab blockFireSlab = new BlockModdedSlab("fire_slab", Material.WOOD, 0.3f);
     public static BlockFloorDrum blockFloorDrum = (BlockFloorDrum) RegistryEventHandler.withName(new BlockFloorDrum(),"floor_drum");
     public static BlockFireFlowerCrop blockFireFlowerCrop = new BlockFireFlowerCrop();
+    public static BlockFireFurnace blockFireFurnace = (BlockFireFurnace) RegistryEventHandler.withName(new BlockFireFurnace(),"fire_furnace");
 }

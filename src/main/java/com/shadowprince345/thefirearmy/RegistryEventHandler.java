@@ -2,6 +2,7 @@ package com.shadowprince345.thefirearmy;
 
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
 import com.shadowprince345.thefirearmy.client.tesr.RendererFireBlackSmithFurnace;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.init.Blocks;
@@ -62,9 +63,11 @@ public class RegistryEventHandler {
         registryBlock.register(Blocks.blockFireSlab.getDoubleSlab());
         registryBlock.register(Blocks.blockFloorDrum);
         registryBlock.register(Blocks.blockFireFlowerCrop);
+        registryBlock.register(Blocks.blockFireFurnace);
 
-        GameRegistry.registerTileEntity(TileEntityFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"block_fire_blacksmith_furnace"));
+        GameRegistry.registerTileEntity(TileEntityFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"));
         GameRegistry.registerTileEntity(TileDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
+        GameRegistry.registerTileEntity(TileEntityFireFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_furnace"));
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFireBlacksmithFurnace.class, new RendererFireBlackSmithFurnace());
     }
@@ -85,6 +88,7 @@ public class RegistryEventHandler {
         registry.register(withName(Blocks.blockFireSlab.getDoubleSlab()));
         registry.register(withName(Blocks.blockFloorDrum));
         registry.register(withName(Blocks.blockFireFlowerCrop));
+        registry.register(withName(Blocks.blockFireFurnace));
 
         registry.register(Items.itemDev);
         registry.register(Items.itemGoldPlate);
@@ -105,6 +109,7 @@ public class RegistryEventHandler {
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getSlab()), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFloorDrum), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireFurnace), 0, "inventory");
 
         TheFireArmy.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemGoldPlate, 0, "inventory");
