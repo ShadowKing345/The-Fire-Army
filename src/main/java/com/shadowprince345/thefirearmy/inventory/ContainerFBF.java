@@ -14,14 +14,14 @@ import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
-public class ContainerFireBlacksmithFurnace extends Container {
+public class ContainerFBF extends Container {
     private ItemStackHandler furnaceHandler;
     public TileEntityFireBlacksmithFurnace furnace;
     public InventoryPlayer inventoryPlayer;
     public int fuelLevel = -1;
     public int progressLevel = -1;
 
-    public ContainerFireBlacksmithFurnace(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace){
+    public ContainerFBF(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace){
         this.inventoryPlayer = inventoryPlayer;
         this.furnace = furnace;
 

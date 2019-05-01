@@ -4,8 +4,8 @@ import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
 import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.inventory.ContainerDev;
-import com.shadowprince345.thefirearmy.inventory.ContainerFireBlacksmithBench;
-import com.shadowprince345.thefirearmy.inventory.ContainerFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.inventory.ContainerFBB;
+import com.shadowprince345.thefirearmy.inventory.ContainerFBF;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -29,9 +29,9 @@ public class GuiHandler implements IGuiHandler {
             case GUI_DEV:
                 return new ContainerDev(player.inventory, (TileDev) world.getTileEntity(new BlockPos(x,y,z)));
             case GUI_FIRE_BLACKSMITH_BENCH:
-                return new ContainerFireBlacksmithBench(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+                return new ContainerFBB(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case GUI_FIRE_BLACKSMITH_FURNACE:
-                return new ContainerFireBlacksmithFurnace(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+                return new ContainerFBF(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -44,9 +44,9 @@ public class GuiHandler implements IGuiHandler {
             case GUI_DEV:
                 return new GUIDev(new ContainerDev(player.inventory, (TileDev) world.getTileEntity(new BlockPos(x,y,z))));
             case GUI_FIRE_BLACKSMITH_BENCH:
-                return new GuiFBB(new ContainerFireBlacksmithBench(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+                return new GuiFBB(new ContainerFBB(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             case GUI_FIRE_BLACKSMITH_FURNACE:
-                return new GUIFireBlacksmithFurnace(new ContainerFireBlacksmithFurnace(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+                return new GuiFBF(new ContainerFBF(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             default:
                 return null;
         }

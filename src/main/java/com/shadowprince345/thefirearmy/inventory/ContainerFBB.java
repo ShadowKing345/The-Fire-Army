@@ -21,14 +21,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerFireBlacksmithBench extends Container {
+public class ContainerFBB extends Container {
     public final TileEntityFireBlacksmithFurnace furnace;
     private final ItemHandlerCrafting craftingMatrix;
     private final BlacksmithBenchCraftResult craftResult;
     public final InventoryPlayer inventoryPlayer;
     public int fuelLevel = -1;
 
-    public ContainerFireBlacksmithBench(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace) {
+    public ContainerFBB(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace) {
         this.inventoryPlayer = inventoryPlayer;
         this.craftingMatrix = new ItemHandlerCrafting(this, furnace.benchInventory);
         this.craftResult = new BlacksmithBenchCraftResult();

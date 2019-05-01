@@ -1,16 +1,16 @@
 package com.shadowprince345.thefirearmy.client.gui;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
-import com.shadowprince345.thefirearmy.inventory.ContainerFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.inventory.ContainerFBF;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class GUIFireBlacksmithFurnace extends GuiContainer {
+public class GuiFBF extends GuiContainer {
     private static final ResourceLocation texture = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_furnace.png");
-    private ContainerFireBlacksmithFurnace container;
+    private ContainerFBF container;
 
-    public GUIFireBlacksmithFurnace(ContainerFireBlacksmithFurnace c) {
+    public GuiFBF(ContainerFBF c) {
         super(c);
         this.container = c;
 

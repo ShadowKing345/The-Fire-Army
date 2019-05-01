@@ -1,16 +1,16 @@
 package com.shadowprince345.thefirearmy.client.gui;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
-import com.shadowprince345.thefirearmy.inventory.ContainerFireBlacksmithBench;
+import com.shadowprince345.thefirearmy.inventory.ContainerFBB;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiFBB extends GuiContainer {
     public static final ResourceLocation texture = new ResourceLocation(TheFireArmy.getModId(), "textures/gui/gui_fire_blacksmith_bench.png");
-    private ContainerFireBlacksmithBench container;
+    private ContainerFBB container;
 
-    public GuiFBB(ContainerFireBlacksmithBench c) {
+    public GuiFBB(ContainerFBB c) {
         super(c);
         container = c;
 
