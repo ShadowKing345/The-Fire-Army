@@ -26,7 +26,7 @@ public class ContainerFireFurnace extends Container {
     public ContainerFireFurnace(InventoryPlayer inventoryPlayer, TileEntityFireFurnace furnace){
         this.inventoryPlayer = inventoryPlayer;
         this.furnace = furnace;
-        furnaceHandler = furnace.furnaceInventory;
+        furnaceHandler = furnace.inventory;
 
         addSlotToContainer(new SlotItemHandler(furnaceHandler, 0, 67, 50){
             @Override

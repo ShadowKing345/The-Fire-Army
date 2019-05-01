@@ -9,15 +9,19 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public class TileEntityFireFurnace extends TileEntity implements ITickable {
-    public ItemStackHandler furnaceInventory = new ItemStackHandler(3){
+public class TileEntityFireFurnace extends TileEntity implements ITickable, ICapabilityProvider {
+    public ItemStackHandler inventory = new ItemStackHandler(3){
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
             if(slot == 2)
@@ -45,7 +49,7 @@ public class TileEntityFireFurnace extends TileEntity implements ITickable {
 
         totalProgress = 0;
 
-        ItemStack fuel = furnaceInventory.getStackInSlot(0);
+        ItemStack fuel = inventory.getStackInSlot(0);
         if (!fuel.isEmpty()) {
             if (TileEntityFurnace.isItemFuel(fuel) && currentBurnTime <= 0) {
                 totalBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
@@ -53,25 +57,25 @@ public class TileEntityFireFurnace extends TileEntity implements ITickable {
                 if (fuel.getItem() instanceof ItemBucket)
                     world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 1, pos.getZ(), new ItemStack(Items.BUCKET)));
                 fuel.shrink(1);
-                furnaceInventory.setStackInSlot(0, fuel);
+                inventory.setStackInSlot(0, fuel);
                 isBurning = true;
             }
         }
 
-        ItemStack output = furnaceInventory.getStackInSlot(2);
+        ItemStack output = inventory.getStackInSlot(2);
         boolean hasOutput = !output.isEmpty();
 
         if (hasOutput && output.getCount() >= output.getMaxStackSize())
             return;
 
-        ItemStack recipe = FurnaceRecipes.instance().getSmeltingResult(furnaceInventory.getStackInSlot(1));
+        ItemStack recipe = FurnaceRecipes.instance().getSmeltingResult(inventory.getStackInSlot(1));
         if (recipe == ItemStack.EMPTY)
             return;
 
         if (hasOutput && (recipe.isEmpty() || recipe.getItem() != output.getItem() || recipe.getMetadata() != output.getMetadata()))
             return;
 
-        totalProgress = 360;
+        totalProgress = 120;
 
         if (!isBurning) {
             progress = 0;
@@ -82,15 +86,15 @@ public class TileEntityFireFurnace extends TileEntity implements ITickable {
         currentBurnTime--;
 
         if (progress >= totalProgress) {
-            ItemStack input = furnaceInventory.getStackInSlot(1);
+            ItemStack input = inventory.getStackInSlot(1);
             input.shrink(1);
-            furnaceInventory.setStackInSlot(1, input);
+            inventory.setStackInSlot(1, input);
 
             if (hasOutput) {
-                output.grow(2);
-                furnaceInventory.setStackInSlot(2, output);
+                output.grow(1);
+                inventory.setStackInSlot(2, output);
             } else {
-                furnaceInventory.setStackInSlot(2, ItemHandlerHelper.copyStackWithSize(recipe, 2));
+                inventory.setStackInSlot(2, ItemHandlerHelper.copyStackWithSize(recipe, 1));
             }
 
             progress = 0;
@@ -107,8 +111,8 @@ public class TileEntityFireFurnace extends TileEntity implements ITickable {
         progress = nbt.getInteger("progress");
 
         NBTTagCompound itemsTag = new NBTTagCompound();
-        itemsTag.setTag("Items", nbt.getTagList("benchInventory", Constants.NBT.TAG_COMPOUND));
-        furnaceInventory.deserializeNBT(itemsTag);
+        itemsTag.setTag("Items", nbt.getTagList("inventory", Constants.NBT.TAG_COMPOUND));
+        inventory.deserializeNBT(itemsTag);
         super.readFromNBT(nbt);
     }
 
@@ -121,6 +125,7 @@ public class TileEntityFireFurnace extends TileEntity implements ITickable {
             nbt.setInteger("total", totalBurnTime);
         if (progress > 0)
             nbt.setInteger("progress", progress);
+        nbt.setTag("inventory", inventory.serializeNBT().getTag("Items"));
         return super.writeToNBT(nbt);
     }
 
@@ -136,5 +141,16 @@ public class TileEntityFireFurnace extends TileEntity implements ITickable {
     public void markDirty() {
         if (world != null)
             world.markChunkDirty(pos, this);
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+        return (T) inventory;
     }
 }

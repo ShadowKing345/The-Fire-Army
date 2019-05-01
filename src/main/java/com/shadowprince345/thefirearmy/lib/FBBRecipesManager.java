@@ -4,6 +4,7 @@ import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.recipe.FBBRecipeApi;
 import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
+import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;
 import com.sun.istack.internal.NotNull;
 import net.minecraft.item.Item;
@@ -63,6 +64,11 @@ public class FBBRecipesManager {
                 "minecraft:air, firearmy:fire_plank, minecraft:air," +
                 "minecraft:air, minecraft:blaze_rod, minecraft:air",
                 new ItemStack(Items.fireSword), 200);
+
+        add("firearmy:iron_plate, minecraft:stone, firearmy:iron_plate,"+
+                        "firearmy:iron_plate, firearmy:fire_flower, firearmy:iron_plate," +
+                        "firearmy:iron_plate, minecraft:stone, firearmy:iron_plate",
+                new ItemStack(Blocks.blockFireFurnace), 800);
     }
 
     @NotNull

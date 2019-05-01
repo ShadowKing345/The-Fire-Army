@@ -14,7 +14,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -126,7 +125,7 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
         itemsTag.setTag("Items", nbt.getTagList("benchInventory", Constants.NBT.TAG_COMPOUND));
         benchInventory.deserializeNBT(itemsTag);
         itemsTag = new NBTTagCompound();
-        itemsTag.setTag("Items", nbt.getTagList("furnaceInventory", Constants.NBT.TAG_COMPOUND));
+        itemsTag.setTag("Items", nbt.getTagList("inventory", Constants.NBT.TAG_COMPOUND));
         furnaceInventory.deserializeNBT(itemsTag);
         super.readFromNBT(nbt);
     }
@@ -141,7 +140,7 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
         if (progress > 0)
             nbt.setInteger("progress", progress);
         nbt.setTag("benchInventory", benchInventory.serializeNBT().getTag("Items"));
-        nbt.setTag("furnaceInventory", furnaceInventory.serializeNBT().getTag("Items"));
+        nbt.setTag("inventory", furnaceInventory.serializeNBT().getTag("Items"));
         return super.writeToNBT(nbt);
     }
 
@@ -161,19 +160,13 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        return true;
+        return false;
     }
 
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if (facing == EnumFacing.UP)
-                return (T) benchInventory;
-            else
-                return (T) furnaceInventory;
-        }
-        return super.getCapability(capability, facing);
+        return null;
     }
 
     public IFBBRecipe getCraftingRecipe() {
