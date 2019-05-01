@@ -13,18 +13,27 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITickable, ICapabilityProvider {
+public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITickable{
 
     public ItemStackHandler benchInventory = new ItemStackHandler(9);
-    public ItemStackHandler furnaceInventory = new ItemStackHandler(3);
+    public ItemStackHandler furnaceInventory = new ItemStackHandler(3){
+        @Override
+        public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+            if(slot == 1)
+                return FurnaceRecipes.instance().getSmeltingResult(this.getStackInSlot(0)) == stack;
+            if(slot == 2)
+                return TileEntityFurnace.isItemFuel(stack);
+            return true;
+        }
+    };
     public boolean isBurning = false;
 
     public int totalProgress = 0;
@@ -93,7 +102,7 @@ public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITick
                 output.grow(2);
                 furnaceInventory.setStackInSlot(1, output);
             } else {
-                furnaceInventory.setStackInSlot(1, ItemHandlerHelper.copyStackWithSize(recipe, 2));
+                furnaceInventory.setStackInSlot(1, ItemHandlerHelper.copyStackWithSize(recipe, 1));
             }
 
             progress = 0;
