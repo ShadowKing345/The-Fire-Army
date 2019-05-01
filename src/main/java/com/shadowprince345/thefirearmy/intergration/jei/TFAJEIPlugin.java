@@ -5,6 +5,7 @@ import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
@@ -24,7 +25,8 @@ public class TFAJEIPlugin implements IModPlugin {
         registry.handleRecipes(IFBBRecipe.class, FBBRecipeWrapper::new, RecipeCategoriesUid.FBB);
 
         registry.addRecipes(FBBRecipesManager.instance.getRecipes(), RecipeCategoriesUid.FBB);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireBlacksmithFurnace),RecipeCategoriesUid.FBB);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireBlacksmithFurnace), RecipeCategoriesUid.FBB);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireBlacksmithFurnace), VanillaRecipeCategoryUid.SMELTING);
     }
 
     @Override
