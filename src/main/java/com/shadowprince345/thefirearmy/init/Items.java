@@ -8,7 +8,7 @@ import net.minecraft.item.ItemSeeds;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class Items {
-    public static final Item.ToolMaterial FIRE_WOOD_MATRTIAL = EnumHelper.addToolMaterial("FIRE_WOOD",0,59, 2.0F, 0.0F, 15);
+    public static final Item.ToolMaterial FIRE_WOOD_MATRTIAL = EnumHelper.addToolMaterial("FIRE_WOOD",0,80, 2.0F, 0.5F, 15);
 
     public static Item itemDev = RegistryEventHandler.withName(new ItemDev(), "item_dev");
     public static Item itemGoldPlate = RegistryEventHandler.withName(new Item(), "gold_plate");
