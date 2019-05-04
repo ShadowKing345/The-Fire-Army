@@ -9,11 +9,21 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @author shadowking345
+ * The Item handler varient of {@link net.minecraft.inventory.InventoryCrafting}
+ * Note by its nature i have to pass an empty IInventory
+ * todo: stop passing a empty IInventory.
+ */
 public class ItemHandlerCrafting extends ItemStackHandler {
 
     private final Container container;
     private final ItemStackHandler handler;
 
+    /**
+     * @param container The container to which the onCraftMatrixChanged is called.
+     * @param handler The {@link ItemStackHandler} to be manipulated.
+     */
     public ItemHandlerCrafting(Container container, ItemStackHandler handler) {
         this.container = container;
         this.handler = handler;

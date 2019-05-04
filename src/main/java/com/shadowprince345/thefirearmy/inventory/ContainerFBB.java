@@ -2,9 +2,10 @@ package com.shadowprince345.thefirearmy.inventory;
 
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.gui.SlotCraftingItemHandler;
+import com.shadowprince345.thefirearmy.api.recipe.FBBRecipeApi;
 import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
+import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipeManager;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -22,13 +23,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerFBB extends Container {
-    public final TileEntityFireBlacksmithFurnace furnace;
+    public final TEFireBlacksmithFurnace furnace;
     private final ItemHandlerCrafting craftingMatrix;
     private final BlacksmithBenchCraftResult craftResult;
     public final InventoryPlayer inventoryPlayer;
     public int fuelLevel = -1;
 
-    public ContainerFBB(InventoryPlayer inventoryPlayer, TileEntityFireBlacksmithFurnace furnace) {
+    public ContainerFBB(InventoryPlayer inventoryPlayer, TEFireBlacksmithFurnace furnace) {
         this.inventoryPlayer = inventoryPlayer;
         this.craftingMatrix = new ItemHandlerCrafting(this, furnace.benchInventory);
         this.craftResult = new BlacksmithBenchCraftResult();
@@ -198,12 +199,17 @@ public class ContainerFBB extends Container {
     }
 
     private void slotChangedCraftingGrid(World world, EntityPlayer player, ItemHandlerCrafting craftingMatrix, BlacksmithBenchCraftResult craftResult) {
-        if(world.isRemote) return;
+        if (world.isRemote) return;
 
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         ItemStack output = ItemStack.EMPTY;
-        IFBBRecipe recipe = FBBRecipesManager.instance.findRecipe(craftingMatrix);
-        if(recipe != null){
+        IFBBRecipe recipe = null;
+
+        for (IFBBRecipeManager manager : FBBRecipeApi.getManagers()) {
+            recipe = manager.findRecipe(craftingMatrix);
+        }
+
+        if (recipe != null) {
             craftResult.setRecipe(recipe);
             furnace.setCraftingRecipe(recipe);
             output = recipe.getOutput();
