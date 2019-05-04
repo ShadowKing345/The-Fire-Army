@@ -20,7 +20,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityFireBlacksmithFurnace extends TileEntity implements ITickable{
+public class TEFireBlacksmithFurnace extends TileEntity implements ITickable{
 
     public ItemStackHandler benchInventory = new ItemStackHandler(9);
     public ItemStackHandler furnaceInventory = new ItemStackHandler(3){

@@ -1,8 +1,8 @@
 package com.shadowprince345.thefirearmy;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEDev;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
 import com.shadowprince345.thefirearmy.client.tesr.RendererFireBlackSmithFurnace;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.init.Blocks;
@@ -24,7 +24,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber
-public class RegistryEventHandler {
+public class EventHandler {
 
     public static Block withName(Block block, String name){
         block.setRegistryName(name);
@@ -65,11 +65,11 @@ public class RegistryEventHandler {
         registryBlock.register(Blocks.blockFireFlowerCrop);
         registryBlock.register(Blocks.blockFireFurnace);
 
-        GameRegistry.registerTileEntity(TileEntityFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"));
-        GameRegistry.registerTileEntity(TileDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
-        GameRegistry.registerTileEntity(TileEntityFireFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_furnace"));
+        GameRegistry.registerTileEntity(TEFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"));
+        GameRegistry.registerTileEntity(TEDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
+        GameRegistry.registerTileEntity(TEFireFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_furnace"));
 
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFireBlacksmithFurnace.class, new RendererFireBlackSmithFurnace());
+        ClientRegistry.bindTileEntitySpecialRenderer(TEFireBlacksmithFurnace.class, new RendererFireBlackSmithFurnace());
     }
 
     @SubscribeEvent

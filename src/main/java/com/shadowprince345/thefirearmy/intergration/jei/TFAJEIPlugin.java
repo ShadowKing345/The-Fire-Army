@@ -5,7 +5,7 @@ import com.shadowprince345.thefirearmy.client.gui.GuiFBB;
 import com.shadowprince345.thefirearmy.client.gui.GuiFBF;
 import com.shadowprince345.thefirearmy.client.gui.GuiFireFurnace;
 import com.shadowprince345.thefirearmy.init.Blocks;
-import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
+import com.shadowprince345.thefirearmy.lib.FBBSimpleRecipesManager;
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
@@ -31,7 +31,7 @@ public class TFAJEIPlugin implements IModPlugin {
         registry.addRecipeClickArea(GuiFBF.class, 85, 32, 15, 13, VanillaRecipeCategoryUid.SMELTING);
         registry.addRecipeClickArea(GuiFireFurnace.class, 85, 32, 15, 13, VanillaRecipeCategoryUid.SMELTING);
 
-        registry.addRecipes(FBBRecipesManager.instance.getRecipes(), RecipeCategoriesUid.FBB);
+        registry.addRecipes(FBBSimpleRecipesManager.instance.getRecipes(), RecipeCategoriesUid.FBB);
         registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireBlacksmithFurnace), RecipeCategoriesUid.FBB);
         registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireBlacksmithFurnace), VanillaRecipeCategoryUid.SMELTING);
         registry.addRecipeCategoryCraftingItem(new ItemStack(Blocks.blockFireFurnace), VanillaRecipeCategoryUid.SMELTING);

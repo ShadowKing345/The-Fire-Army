@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.blocks.machines;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.client.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -49,7 +49,7 @@ public class BlockFireBlacksmithFurnace extends Block {
 
         TileEntity tileEntity = worldIn.getTileEntity(pos);
 
-        if (tileEntity instanceof TileEntityFireBlacksmithFurnace) {
+        if (tileEntity instanceof TEFireBlacksmithFurnace) {
             if(facing == EnumFacing.UP)
                 GuiHandler.open(playerIn, GuiHandler.GUI_FIRE_BLACKSMITH_BENCH, pos.getX(), pos.getY(), pos.getZ());
             else
@@ -141,7 +141,7 @@ public class BlockFireBlacksmithFurnace extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntityFireBlacksmithFurnace();
+        return new TEFireBlacksmithFurnace();
     }
 
     @Override

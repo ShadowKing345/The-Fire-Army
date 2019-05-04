@@ -1,8 +1,9 @@
 package com.shadowprince345.thefirearmy;
 
+import com.shadowprince345.thefirearmy.api.recipe.FBBRecipeApi;
 import com.shadowprince345.thefirearmy.client.GuiHandler;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
-import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
+import com.shadowprince345.thefirearmy.lib.FBBSimpleRecipesManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -31,12 +32,12 @@ public class TheFireArmy {
         logger = e.getModLog();
         Tabs.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-        FBBRecipesManager.initialize();
+        FBBRecipeApi.addManager(new FBBSimpleRecipesManager());
     }
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent e){
-        RegistryEventHandler.registerOreDic();
+        EventHandler.registerOreDic();
     }
 
     public static void postInit(FMLPostInitializationEvent e){

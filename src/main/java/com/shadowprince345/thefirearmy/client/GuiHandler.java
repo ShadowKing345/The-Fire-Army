@@ -1,9 +1,9 @@
 package com.shadowprince345.thefirearmy.client;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
-import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEDev;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
 import com.shadowprince345.thefirearmy.client.gui.GUIDev;
 import com.shadowprince345.thefirearmy.client.gui.GuiFBB;
 import com.shadowprince345.thefirearmy.client.gui.GuiFBF;
@@ -34,13 +34,13 @@ public class GuiHandler implements IGuiHandler {
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
             case GUI_DEV:
-                return new ContainerDev(player.inventory, (TileDev) world.getTileEntity(new BlockPos(x,y,z)));
+                return new ContainerDev(player.inventory, (TEDev) world.getTileEntity(new BlockPos(x,y,z)));
             case GUI_FIRE_BLACKSMITH_BENCH:
-                return new ContainerFBB(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+                return new ContainerFBB(player.inventory, (TEFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case GUI_FIRE_BLACKSMITH_FURNACE:
-                return new ContainerFBF(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+                return new ContainerFBF(player.inventory, (TEFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case GUI_FIRE_FURNACE:
-                return new ContainerFireFurnace(player.inventory, (TileEntityFireFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+                return new ContainerFireFurnace(player.inventory, (TEFireFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -51,13 +51,13 @@ public class GuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
             case GUI_DEV:
-                return new GUIDev(new ContainerDev(player.inventory, (TileDev) world.getTileEntity(new BlockPos(x,y,z))));
+                return new GUIDev(new ContainerDev(player.inventory, (TEDev) world.getTileEntity(new BlockPos(x,y,z))));
             case GUI_FIRE_BLACKSMITH_BENCH:
-                return new GuiFBB(new ContainerFBB(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+                return new GuiFBB(new ContainerFBB(player.inventory, (TEFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             case GUI_FIRE_BLACKSMITH_FURNACE:
-                return new GuiFBF(new ContainerFBF(player.inventory, (TileEntityFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+                return new GuiFBF(new ContainerFBF(player.inventory, (TEFireBlacksmithFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             case GUI_FIRE_FURNACE:
-                return new GuiFireFurnace(new ContainerFireFurnace(player.inventory, (TileEntityFireFurnace) world.getTileEntity(new BlockPos(x, y, z))));
+                return new GuiFireFurnace(new ContainerFireFurnace(player.inventory, (TEFireFurnace) world.getTileEntity(new BlockPos(x, y, z))));
             default:
                 return null;
         }

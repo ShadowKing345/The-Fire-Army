@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.blocks.machines;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
 import com.shadowprince345.thefirearmy.client.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -38,7 +38,7 @@ public class BlockFireFurnace extends Block {
         if(worldIn.isRemote) return !playerIn.isSneaking();
         TileEntity tileEntity = worldIn.getTileEntity(pos);
 
-        if(tileEntity instanceof TileEntityFireFurnace)
+        if(tileEntity instanceof TEFireFurnace)
             GuiHandler.open(playerIn, GuiHandler.GUI_FIRE_FURNACE, pos.getX(), pos.getY(), pos.getZ());
 
         return !playerIn.isSneaking();
@@ -79,7 +79,7 @@ public class BlockFireFurnace extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntityFireFurnace();
+        return new TEFireFurnace();
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.inventory;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEDev;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,9 +9,9 @@ import net.minecraft.inventory.Slot;
 public class ContainerDev extends Container {
 
     public final InventoryPlayer inventoryPlayer;
-    public final TileDev furnace;
+    public final TEDev furnace;
 
-    public ContainerDev(InventoryPlayer inventoryPlayer, TileDev furnace) {
+    public ContainerDev(InventoryPlayer inventoryPlayer, TEDev furnace) {
         this.inventoryPlayer = inventoryPlayer;
         this.furnace = furnace;
 

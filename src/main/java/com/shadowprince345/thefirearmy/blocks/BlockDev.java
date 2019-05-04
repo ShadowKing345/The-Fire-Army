@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.blocks;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileDev;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEDev;
 import com.shadowprince345.thefirearmy.client.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -36,6 +36,6 @@ public class BlockDev extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileDev();
+        return new TEDev();
     }
 }

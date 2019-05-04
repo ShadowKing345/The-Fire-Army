@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.client.tesr;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.animation.FastTESR;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class RendererFireBlackSmithFurnace extends FastTESR<TileEntityFireBlacksmithFurnace> {
+public class RendererFireBlackSmithFurnace extends FastTESR<TEFireBlacksmithFurnace> {
 
     private static float partialTicks = 0;
 
     @Override
-    public void renderTileEntityFast(TileEntityFireBlacksmithFurnace te, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
+    public void renderTileEntityFast(TEFireBlacksmithFurnace te, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
         EntityItem itemEntity = new EntityItem(Minecraft.getMinecraft().world, 0,0,0, ItemStack.EMPTY);
         itemEntity.hoverStart = 0;
 

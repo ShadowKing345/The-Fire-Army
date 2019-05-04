@@ -20,7 +20,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityFireFurnace extends TileEntity implements ITickable, ICapabilityProvider {
+public class TEFireFurnace extends TileEntity implements ITickable, ICapabilityProvider {
     public ItemStackHandler inventory = new ItemStackHandler(3){
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {

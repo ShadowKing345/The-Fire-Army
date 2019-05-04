@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.inventory;
 
-import com.shadowprince345.thefirearmy.blocks.tiles.TileEntityFireFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -18,12 +18,12 @@ import javax.annotation.Nonnull;
 
 public class ContainerFireFurnace extends Container {
     private ItemStackHandler furnaceHandler;
-    public TileEntityFireFurnace furnace;
+    public TEFireFurnace furnace;
     public InventoryPlayer inventoryPlayer;
     public int fuelLevel = -1;
     public int progressLevel = -1;
 
-    public ContainerFireFurnace(InventoryPlayer inventoryPlayer, TileEntityFireFurnace furnace){
+    public ContainerFireFurnace(InventoryPlayer inventoryPlayer, TEFireFurnace furnace){
         this.inventoryPlayer = inventoryPlayer;
         this.furnace = furnace;
         furnaceHandler = furnace.inventory;
