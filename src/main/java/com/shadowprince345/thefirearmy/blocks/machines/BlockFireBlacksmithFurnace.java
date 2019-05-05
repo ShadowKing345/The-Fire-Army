@@ -22,8 +22,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -151,15 +149,16 @@ public class BlockFireBlacksmithFurnace extends Block {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        IItemHandler handler = worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+        if(worldIn.isRemote) return;
 
-        for(int slot = 0; slot < handler.getSlots(); slot++)
-            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), handler.getStackInSlot(slot));
+        TEFireBlacksmithFurnace tileEntity = (TEFireBlacksmithFurnace) worldIn.getTileEntity(pos);
+        if(tileEntity == null) return;
 
-        handler = worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        for(int slot = 0; slot < tileEntity.benchInventory.getSlots(); slot++)
+            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileEntity.benchInventory.getStackInSlot(slot));
 
-        for(int slot = 0; slot < handler.getSlots(); slot++)
-            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), handler.getStackInSlot(slot));
+        for(int slot = 0; slot < tileEntity.furnaceInventory.getSlots(); slot++)
+            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileEntity.furnaceInventory.getStackInSlot(slot));
 
         super.breakBlock(worldIn, pos, state);
     }
