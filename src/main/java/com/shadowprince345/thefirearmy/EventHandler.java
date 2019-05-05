@@ -3,7 +3,7 @@ package com.shadowprince345.thefirearmy;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEDev;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
-import com.shadowprince345.thefirearmy.client.tesr.RendererFireBlackSmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEGrinder;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;
@@ -16,7 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -64,12 +63,12 @@ public class EventHandler {
         registryBlock.register(Blocks.blockFloorDrum);
         registryBlock.register(Blocks.blockFireFlowerCrop);
         registryBlock.register(Blocks.blockFireFurnace);
+        registryBlock.register(Blocks.blockGrinder);
 
         GameRegistry.registerTileEntity(TEFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"));
         GameRegistry.registerTileEntity(TEDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
         GameRegistry.registerTileEntity(TEFireFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_furnace"));
-
-        ClientRegistry.bindTileEntitySpecialRenderer(TEFireBlacksmithFurnace.class, new RendererFireBlackSmithFurnace());
+        GameRegistry.registerTileEntity(TEGrinder.class, new ResourceLocation(TheFireArmy.getModId(),"grinding_stone"));
     }
 
     @SubscribeEvent
@@ -89,6 +88,7 @@ public class EventHandler {
         registry.register(withName(Blocks.blockFloorDrum));
         registry.register(withName(Blocks.blockFireFlowerCrop));
         registry.register(withName(Blocks.blockFireFurnace));
+        registry.register(withName(Blocks.blockGrinder));
 
         registry.register(Items.itemDev);
         registry.register(Items.itemGoldPlate);
@@ -110,6 +110,7 @@ public class EventHandler {
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFloorDrum), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireFurnace), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockGrinder), 0, "inventory");
 
         TheFireArmy.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemGoldPlate, 0, "inventory");

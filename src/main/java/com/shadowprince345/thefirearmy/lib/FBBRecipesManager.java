@@ -4,7 +4,6 @@ import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.recipe.FBBRecipeApi;
 import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
-import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipeManager;
 import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;
 import com.sun.istack.internal.NotNull;
@@ -13,25 +12,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FBBSimpleRecipesManager implements IFBBRecipeManager {
-    public static final FBBSimpleRecipesManager instance = new FBBSimpleRecipesManager();
+public class FBBRecipesManager {
+    public static final FBBRecipesManager instance = new FBBRecipesManager();
     private static List<IFBBRecipe> theList = new ArrayList<>();
+    private static FBBRecipeApi REGISTRY = null;
+
+    public static void initialise(){
+        REGISTRY = new FBBRecipeApi(instance);
+        MinecraftForge.EVENT_BUS.register(new FBBRecipesManager());
+    }
 
     @SubscribeEvent
     public void event(RegistryEvent.Register<IRecipe> event){
         loadAll();
     }
 
-    public void add(IFBBRecipe recipe){
+    public void add(IFBBRecipe recipe) {
         theList.add(recipe);
-        FBBRecipeApi.addRecipe(recipe);
     }
+
     public void remove(IFBBRecipe recipe){
         theList.remove(recipe);
     }

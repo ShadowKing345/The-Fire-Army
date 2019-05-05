@@ -2,10 +2,9 @@ package com.shadowprince345.thefirearmy.inventory;
 
 import com.shadowprince345.thefirearmy.api.gui.ItemHandlerCrafting;
 import com.shadowprince345.thefirearmy.api.gui.SlotCraftingItemHandler;
-import com.shadowprince345.thefirearmy.api.recipe.FBBRecipeApi;
 import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
-import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipeManager;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -203,11 +202,8 @@ public class ContainerFBB extends Container {
 
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         ItemStack output = ItemStack.EMPTY;
-        IFBBRecipe recipe = null;
 
-        for (IFBBRecipeManager manager : FBBRecipeApi.getManagers()) {
-            recipe = manager.findRecipe(craftingMatrix);
-        }
+        IFBBRecipe recipe = FBBRecipesManager.instance.findRecipe(craftingMatrix);
 
         if (recipe != null) {
             craftResult.setRecipe(recipe);
