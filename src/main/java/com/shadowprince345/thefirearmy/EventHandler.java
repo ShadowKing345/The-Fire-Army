@@ -3,15 +3,18 @@ package com.shadowprince345.thefirearmy;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEDev;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
-import com.shadowprince345.thefirearmy.blocks.tiles.TEGrinder;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEGrindstone;
 import com.shadowprince345.thefirearmy.creativetab.Tabs;
 import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;
+import com.shadowprince345.thefirearmy.lib.FBBRecipesManager;
+import com.shadowprince345.thefirearmy.lib.GrindstoneRecipeManager;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -63,12 +66,12 @@ public class EventHandler {
         registryBlock.register(Blocks.blockFloorDrum);
         registryBlock.register(Blocks.blockFireFlowerCrop);
         registryBlock.register(Blocks.blockFireFurnace);
-        registryBlock.register(Blocks.blockGrinder);
+        registryBlock.register(Blocks.blockGrindstone);
 
         GameRegistry.registerTileEntity(TEFireBlacksmithFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"));
         GameRegistry.registerTileEntity(TEDev.class, new ResourceLocation(TheFireArmy.getModId(),"block_dev"));
         GameRegistry.registerTileEntity(TEFireFurnace.class, new ResourceLocation(TheFireArmy.getModId(),"fire_furnace"));
-        GameRegistry.registerTileEntity(TEGrinder.class, new ResourceLocation(TheFireArmy.getModId(),"grinding_stone"));
+        GameRegistry.registerTileEntity(TEGrindstone.class, new ResourceLocation(TheFireArmy.getModId(),"grindstone"));
     }
 
     @SubscribeEvent
@@ -88,7 +91,7 @@ public class EventHandler {
         registry.register(withName(Blocks.blockFloorDrum));
         registry.register(withName(Blocks.blockFireFlowerCrop));
         registry.register(withName(Blocks.blockFireFurnace));
-        registry.register(withName(Blocks.blockGrinder));
+        registry.register(withName(Blocks.blockGrindstone));
 
         registry.register(Items.itemDev);
         registry.register(Items.itemGoldPlate);
@@ -110,7 +113,7 @@ public class EventHandler {
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireSlab.getDoubleSlab()), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFloorDrum), 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockFireFurnace), 0, "inventory");
-        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockGrinder), 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Item.getItemFromBlock(Blocks.blockGrindstone), 0, "inventory");
 
         TheFireArmy.proxy.registerItemRenderer(Items.itemDev, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemGoldPlate, 0, "inventory");
@@ -138,5 +141,11 @@ public class EventHandler {
             event.setBurnTime(600);
         if(stack.getItem() == Item.getItemFromBlock(Blocks.blockFireSlab.getSlab()))
             event.setBurnTime(200);
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event){
+        FBBRecipesManager.instance.loadDefault();
+        GrindstoneRecipeManager.instance.loadDefault();
     }
 }

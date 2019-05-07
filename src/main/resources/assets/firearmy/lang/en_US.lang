@@ -12,7 +12,7 @@ tile.fire_blacksmith_furnace.name=Fire Blacksmith's Furnace
 tile.floor_drum.name=Floor Drum
 tile.fire_flower_crop.name=Clearly an Error in WAILA
 tile.fire_furnace.name=Fire Furnace
-tile.grinding_stone.name=Grinding Stone
+tile.grindstone.name=Grindstone
 
 item.item_dev.name=Dev Items
 item.gold_plate.name=Gold Plates

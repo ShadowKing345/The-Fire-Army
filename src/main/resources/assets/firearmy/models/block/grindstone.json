@@ -2,12 +2,12 @@
 	"parent": "block/block",
 	"textures": {
 		"0": "firearmy:blocks/fire_plank",
-		"1": "blocks/sandstone_smooth",
-		"2": "blocks/sandstone_top",
-		"3": "blocks/stone_andesite_smooth",
-		"4": "blocks/planks_big_oak",
-		"5": "blocks/planks_oak",
-		"particle": "blocks/stone_andesite_smooth"
+		"1": "minecraft:blocks/sandstone_smooth",
+		"2": "minecraft:blocks/sandstone_top",
+		"3": "minecraft:blocks/stone_andesite_smooth",
+		"4": "minecraft:blocks/planks_big_oak",
+		"5": "minecraft:blocks/planks_oak",
+		"particle": "minecraft:blocks/stone_andesite_smooth"
 	},
 	"elements": [
 		{
@@ -23,8 +23,8 @@
 			}
 		},
 		{
-			"from": [6, 5, 3],
-			"to": [10, 15, 13],
+			"from": [5.5, 5, 3],
+			"to": [10.5, 15, 13],
 			"faces": {
 				"north": {"uv": [6, 1, 10, 11], "texture": "#3"},
 				"east": {"uv": [3, 1, 13, 11], "texture": "#3"},

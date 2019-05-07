@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "active=false,facing=north": { "model": "firearmy:grindstone" },
+    "active=false,facing=south": { "model": "firearmy:grindstone" },
+    "active=false,facing=east": { "model": "firearmy:grindstone" },
+    "active=false,facing=west": { "model": "firearmy:grindstone" },
+    "active=true,facing=north": { "model": "firearmy:grindstone" },
+    "active=true,facing=south": { "model": "firearmy:grindstone" },
+    "active=true,facing=east": { "model": "firearmy:grindstone" },
+    "active=true,facing=west": { "model": "firearmy:grindstone" }
+  }
+}

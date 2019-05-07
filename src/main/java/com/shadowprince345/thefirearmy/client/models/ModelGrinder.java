@@ -14,7 +14,7 @@ public class ModelGrinder extends ModelBase {
 
     public ModelGrinder() {
         stone = (new ModelRenderer(this, 0,0)).setTextureSize(128, 64);
-        stone.addBox(-2.0f,-5.0f,-5.0f, 4, 10, 10);
+        stone.addBox(-3.0f,-5.0f,-5.0f, 6, 10, 10);
 
         counter = (new ModelRenderer(this, 28, 0)).setTextureSize(128, 64);
         counter.addBox(-5.0f,0.0f,7.0f,10,1,3); // plank

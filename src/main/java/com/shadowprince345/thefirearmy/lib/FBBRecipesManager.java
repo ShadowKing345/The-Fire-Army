@@ -31,21 +31,18 @@ public class FBBRecipesManager {
 
     @SubscribeEvent
     public void event(RegistryEvent.Register<IRecipe> event){
-        loadAll();
+        loadDefault();
     }
 
     public void add(IFBBRecipe recipe) {
         theList.add(recipe);
     }
 
-    public void remove(IFBBRecipe recipe){
-        theList.remove(recipe);
-    }
     public List<IFBBRecipe> getRecipes(){
         return theList;
     }
 
-    private void loadAll(){
+    public void loadDefault(){
         add("minecraft:iron_ingot, minecraft:iron_ingot",
                 new ItemStack(com.shadowprince345.thefirearmy.init.Items.itemIronPlate),
                 10);
@@ -70,6 +67,11 @@ public class FBBRecipesManager {
                         "firearmy:iron_plate, firearmy:fire_flower, firearmy:iron_plate," +
                         "firearmy:iron_plate, minecraft:stone, firearmy:iron_plate",
                 new ItemStack(Blocks.blockFireFurnace), 800);
+
+        add(new ItemStack(Blocks.blockGrindstone), 800,
+                ItemStack.EMPTY, new ItemStack(net.minecraft.init.Items.STICK), ItemStack.EMPTY,
+                ItemStack.EMPTY, new ItemStack(net.minecraft.init.Blocks.STONE, 1, 6), new ItemStack(net.minecraft.init.Blocks.SANDSTONE, 1, 0),
+                new ItemStack(net.minecraft.init.Blocks.PLANKS, 1, 0), ItemStack.EMPTY, new ItemStack(net.minecraft.init.Blocks.PLANKS, 1, 0));
     }
 
     @NotNull
