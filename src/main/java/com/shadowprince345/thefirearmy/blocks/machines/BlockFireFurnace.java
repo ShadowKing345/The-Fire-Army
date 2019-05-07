@@ -12,6 +12,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -89,7 +90,9 @@ public class BlockFireFurnace extends Block {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        super.breakBlock(worldIn, pos, state);
+        TEFireFurnace te = (TEFireFurnace) worldIn.getTileEntity(pos);
+        for(int i = 0; i < te.inventory.getSlots(); i++)
+            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), te.inventory.getStackInSlot(i));
     }
 
     public static void setBurning(boolean value, World world, BlockPos pos){

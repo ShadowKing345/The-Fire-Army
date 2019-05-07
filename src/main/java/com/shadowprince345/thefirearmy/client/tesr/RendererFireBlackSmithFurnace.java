@@ -18,7 +18,7 @@ public class RendererFireBlackSmithFurnace extends FastTESR<TEFireBlacksmithFurn
         EntityItem itemEntity = new EntityItem(Minecraft.getMinecraft().world, 0,0,0, ItemStack.EMPTY);
         itemEntity.hoverStart = 0;
 
-        this.partialTicks += partialTicks;
+        RendererFireBlackSmithFurnace.partialTicks += partialTicks;
 
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
@@ -31,7 +31,7 @@ public class RendererFireBlackSmithFurnace extends FastTESR<TEFireBlacksmithFurn
                 {
                     GlStateManager.translate(x + 0.3125f + (0.1875 * i), y + 0.58f, z + 0.3125f + (0.1875 * k));
                     GlStateManager.scale(0.45, 0.45, 0.45);
-                    Minecraft.getMinecraft().getRenderManager().renderEntity(itemEntity, 0, 0, 0, 0f, this.partialTicks, false);
+                    Minecraft.getMinecraft().getRenderManager().renderEntity(itemEntity, 0, 0, 0, 0f, RendererFireBlackSmithFurnace.partialTicks, false);
                 }
                 GlStateManager.popMatrix();
             }
