@@ -19,6 +19,8 @@ item.gold_plate.name=Gold Plates
 item.iron_plate.name=Iron Plates
 item.fire_flower_seed.name=Fire Flower Seeds
 item.fire_wood_sword.name=Fire Wood Sword
+item.iron_dust.name=Iron Dust
+item.gold_dust.name=Gold Dust
 
 gui.firearmy.fireblacksmithbench.name=Fire Blacksmith Bench
 gui.firearmy.grindstone.name=Grindstone

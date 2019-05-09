@@ -15,4 +15,6 @@ public class Items {
     public static Item itemIronPlate = EventHandler.withName(new Item(), "iron_plate");
     public static Item itemFireFlowerSeed = EventHandler.withName(new ItemSeeds(Blocks.blockFireFlowerCrop, net.minecraft.init.Blocks.FARMLAND), "fire_flower_seed");
     public static Item fireSword = new FireSword();
+    public static Item itemIronDust = EventHandler.withName(new Item(), "iron_dust");
+    public static Item itemGoldDust = EventHandler.withName(new Item(), "gold_dust");
 }

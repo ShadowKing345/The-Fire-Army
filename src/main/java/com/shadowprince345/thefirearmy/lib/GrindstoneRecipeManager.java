@@ -33,7 +33,8 @@ public class GrindstoneRecipeManager {
     }
 
     public void loadDefault(){
-        add(new ItemStack(Blocks.IRON_ORE), new ItemStack(Items.itemIronDust), 2, 200);
+        add(new ItemStack(Blocks.IRON_ORE), new ItemStack(Items.itemIronDust, 2), 2, 100);
+        add(new ItemStack(Blocks.GOLD_ORE), new ItemStack(Items.itemGoldDust, 2), 2, 100);
         add(new ItemStack(Blocks.STONE, 1, 0), new ItemStack(Blocks.COBBLESTONE), 1, 200);
         add(new ItemStack(Blocks.COBBLESTONE), new ItemStack(Blocks.GRAVEL, 2), 1, 200);
         add(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.SAND, 2), 1, 100);

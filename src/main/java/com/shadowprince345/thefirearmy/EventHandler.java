@@ -14,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -98,6 +99,8 @@ public class EventHandler {
         registry.register(Items.itemIronPlate);
         registry.register(Items.itemFireFlowerSeed);
         registry.register(Items.fireSword);
+        registry.register(Items.itemIronDust);
+        registry.register(Items.itemGoldDust);
     }
 
     @SubscribeEvent
@@ -120,6 +123,8 @@ public class EventHandler {
         TheFireArmy.proxy.registerItemRenderer(Items.itemIronPlate, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemFireFlowerSeed, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.fireSword, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.itemIronDust, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.itemGoldDust, 0, "inventory");
     }
 
     public static void registerOreDic(){
@@ -147,5 +152,7 @@ public class EventHandler {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event){
         FBBRecipesManager.instance.loadDefault();
         GrindstoneRecipeManager.instance.loadDefault();
+        FurnaceRecipes.instance().addSmelting(Items.itemIronDust, new ItemStack(net.minecraft.init.Items.IRON_INGOT), 0.7F);
+        FurnaceRecipes.instance().addSmelting(Items.itemGoldDust, new ItemStack(net.minecraft.init.Items.GOLD_INGOT), 1.0F);
     }
 }
