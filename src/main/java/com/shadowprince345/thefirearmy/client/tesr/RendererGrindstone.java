@@ -83,6 +83,10 @@ public class RendererGrindstone extends FastTESR<TEGrindstone> {
         EntityItem itemEntity = new EntityItem(Minecraft.getMinecraft().world, 0,0,0, ItemStack.EMPTY);
         itemEntity.hoverStart = 0;
 
+        float xOffset = 0.3125f;
+        float zOffset = 1.03125f;
+        float yOffset = 0.4375f;
+
         for(int i = 0; i < te.inventory.getSlots(); i++) {
             ItemStack stack = te.inventory.getStackInSlot(i);
             if(stack.isEmpty())
@@ -90,9 +94,23 @@ public class RendererGrindstone extends FastTESR<TEGrindstone> {
             itemEntity.setItem(stack);
             GlStateManager.pushMatrix();
             {
-                GlStateManager.translate(x + 0.3f + (0.4f * i),y + 0.4f,z + 1.05f);
+                switch (state.getValue(BlockGrindstone.FACING)) {
+                    case NORTH:
+                    default:
+                        GlStateManager.translate(x + (1 - xOffset) - (0.375f * i), y + yOffset, z + (1 - zOffset));
+                        break;
+                    case SOUTH:
+                        GlStateManager.translate(x + xOffset + (0.375 * i), y + yOffset, z + zOffset);
+                        break;
+                    case EAST:
+                        GlStateManager.translate(x + zOffset , y + yOffset, z + (1 - xOffset) - (0.375 * i));
+                        break;
+                    case WEST:
+                        GlStateManager.translate(x + (1f - zOffset), y + yOffset, z + xOffset + (0.375f * i));
+                        break;
+                }
                 GlStateManager.scale(0.45,0.45,0.45);
-                Minecraft.getMinecraft().getRenderManager().renderEntity(itemEntity, 0,0,0, 0, 0, false);
+                Minecraft.getMinecraft().getRenderManager().renderEntity(itemEntity, 0,-0.0625,0, 0, 0, false);
             }
             GlStateManager.popMatrix();
         }

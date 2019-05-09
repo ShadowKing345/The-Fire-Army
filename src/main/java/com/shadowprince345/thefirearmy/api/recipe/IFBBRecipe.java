@@ -6,7 +6,7 @@ import net.minecraft.util.NonNullList;
 import java.util.List;
 
 /**
- * @author shadowking345
+ * @author shadowprince345
  */
 public interface IFBBRecipe {
 

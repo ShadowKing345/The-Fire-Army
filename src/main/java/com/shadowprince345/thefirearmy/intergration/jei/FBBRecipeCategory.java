@@ -1,21 +1,16 @@
 package com.shadowprince345.thefirearmy.intergration.jei;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
-import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
 import com.shadowprince345.thefirearmy.client.gui.GuiFBB;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
-import mezz.jei.api.recipe.IRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 
-import java.util.List;
-
-public class FBBRecipeCategory extends BlankRecipeCategory {
+public class FBBRecipeCategory implements IRecipeCategory<FBBRecipeWrapper> {
     private final IDrawable background;
     private final String localizedName;
     private int xSize = 128;
@@ -23,7 +18,7 @@ public class FBBRecipeCategory extends BlankRecipeCategory {
 
     public FBBRecipeCategory(IGuiHelper helper) {
         background = helper.createDrawable(GuiFBB.texture, 12,6, xSize, ySize);
-        localizedName = I18n.format("gui.firearmy.fireblacksmithbench.name");
+        localizedName = I18n.format("gui." + TheFireArmy.getModId() + ".fireblacksmithbench.name");
     }
 
     @Override
@@ -47,11 +42,8 @@ public class FBBRecipeCategory extends BlankRecipeCategory {
     }
 
     @Override
-    public void setRecipe(IRecipeLayout iRecipeLayout, IRecipeWrapper iRecipeWrapper, IIngredients iIngredients) {
+    public void setRecipe(IRecipeLayout iRecipeLayout, FBBRecipeWrapper wrapper, IIngredients iIngredients) {
         try{
-            IFBBRecipe recipe = ((FBBRecipeWrapper)iRecipeWrapper).recipe;
-            List<ItemStack> ingra = recipe.getInputs();
-
             IGuiItemStackGroup stackGroup = iRecipeLayout.getItemStacks();
             stackGroup.init(0, false, 105, 24);
 

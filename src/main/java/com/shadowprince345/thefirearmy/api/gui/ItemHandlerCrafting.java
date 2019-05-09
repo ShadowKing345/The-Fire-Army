@@ -10,7 +10,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 
 /**
- * @author shadowking345
+ * @author shadowprince345
  * The Item handler varient of {@link net.minecraft.inventory.InventoryCrafting}
  * Note by its nature i have to pass an empty IInventory
  * todo: stop passing a empty IInventory.

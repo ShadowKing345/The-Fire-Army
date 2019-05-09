@@ -16,22 +16,22 @@ public class ModelGrinder extends ModelBase {
         stone = (new ModelRenderer(this, 0,0)).setTextureSize(128, 64);
         stone.addBox(-3.0f,-5.0f,-5.0f, 6, 10, 10);
 
-        counter = (new ModelRenderer(this, 28, 0)).setTextureSize(128, 64);
+        counter = (new ModelRenderer(this, 33, 0)).setTextureSize(128, 64);
         counter.addBox(-5.0f,0.0f,7.0f,10,1,3); // plank
 
-        axel = (new ModelRenderer(this, 34, 5)).setTextureSize(128, 64);
+        axel = (new ModelRenderer(this, 38, 5)).setTextureSize(128, 64);
         axel.addBox(-5.0f,-1.0f,-1.0f,10,2,2); // axel
 
-        sideCounters = (new ModelRenderer(this, 13, 5)).setTextureSize(128, 64);
+        sideCounters = (new ModelRenderer(this, 17, 5)).setTextureSize(128, 64);
         sideCounters.addBox(-6.0f,1.0f,-8.0f,2,2,16); // side bar right
         sideCounters.addBox(4.0f,1.0f,-8.0f,2,2,16); // side bar left
 
-        frontLegs = (new ModelRenderer(this, 34, 10)).setTextureSize(128, 64);
+        frontLegs = (new ModelRenderer(this, 38, 10)).setTextureSize(128, 64);
         frontLegs.addBox(-5.5f,0.5f,0.5f,1,9,1); // right
         frontLegs.addBox(4.5f,0.5f,0.5f,1,9,1); // left
         frontLegs.rotateAngleX = (float) Math.toRadians(22.5);
 
-        backLegs = (new ModelRenderer(this, 34, 10)).setTextureSize(128, 64);
+        backLegs = (new ModelRenderer(this, 38, 10)).setTextureSize(128, 64);
         backLegs.addBox(-5.5f,0.5f,-1.5f,1,9,1); // right
         backLegs.addBox(4.5f,0.5f,-1.5f,1,9,1); // left
         backLegs.rotateAngleX = (float) Math.toRadians(-22.5);

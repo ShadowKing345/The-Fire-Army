@@ -8,7 +8,7 @@ import net.minecraftforge.items.SlotItemHandler;
 import javax.annotation.Nonnull;
 
 /**
- * @author shadowking345
+ * @author shadowprince345
  * The Item handler varient of {@link net.minecraft.inventory.SlotCrafting}
  * The onTake and onCrafting(ItemStack stack) is not complete for later use.
  */

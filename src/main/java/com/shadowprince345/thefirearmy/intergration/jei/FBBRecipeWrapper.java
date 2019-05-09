@@ -3,15 +3,15 @@ package com.shadowprince345.thefirearmy.intergration.jei;
 import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
-import mezz.jei.api.recipe.BlankRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
+import java.awt.*;
 import java.util.List;
 
-public class FBBRecipeWrapper extends BlankRecipeWrapper {
+public class FBBRecipeWrapper implements IRecipeWrapper {
     public final IFBBRecipe recipe;
 
     public FBBRecipeWrapper(IFBBRecipe recipe){
@@ -27,6 +27,7 @@ public class FBBRecipeWrapper extends BlankRecipeWrapper {
 
     @Override
     public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
+        minecraft.fontRenderer.drawString(Integer.toString(recipe.getCost()), 4, 19, Color.lightGray.getRGB());
     }
 
     @Override
