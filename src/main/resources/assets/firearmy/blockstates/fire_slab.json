@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=top": { "model": "firearmy:fire_slab_upper"},
+    "half=bottom": { "model": "firearmy:fire_slab_lower"}
+  }
+}

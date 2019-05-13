@@ -1,0 +1,6 @@
+{
+  "variants":{
+    "" : {"model" : "firearmy:block/block_dev"}
+
+  }
+}

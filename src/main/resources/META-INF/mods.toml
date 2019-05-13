@@ -1,0 +1,11 @@
+modLoader="javafml"
+loaderVersion="[25,)"
+
+[[mods]]
+modId="firearmy"
+version="1.0"
+displayName="The Fire Army"
+authors="shadowprince345"
+description='''
+Shall the Fire Army forever burn.
+'''

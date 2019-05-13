@@ -1,0 +1,32 @@
+{
+  "itemGroup.firearmytab": "The Fire Army",
+
+  "block.firearmy.block_dev": "Dev Blocks",
+  "block.firearmy.fire_flower": "Fire Flowers",
+  "block.firearmy.fire_log": "Fire Tree Logs",
+  "block.firearmy.fire_leaf": "Fire Tree Leaves",
+  "block.firearmy.fire_sapling": "Fire Tree Saplings",
+  "block.firearmy.fire_plank": "Fire Tree Planks",
+  "block.firearmy.fire_slab": "Fire Tree Slabs",
+  "block.firearmy.fire_slab_double": "Fire Tree Double Slabs",
+  "block.firearmy.fire_blacksmith_furnace": "Fire Blacksmith's Furnace",
+  "block.firearmy.floor_drum": "Floor Drum",
+  "block.firearmy.fire_flower_crop": "Clearly an Error in WAILA",
+  "block.firearmy.fire_furnace": "Fire Furnace",
+  "block.firearmy.grindstone": "Grindstone",
+
+  "item.firearmy.item_dev": "Dev Items",
+  "item.firearmy.gold_plate": "Gold Plates",
+  "item.firearmy.iron_plate": "Iron Plates",
+  "item.firearmy.fire_flower_seed": "Fire Flower Seeds",
+  "item.firearmy.fire_wood_sword": "Fire Wood Sword",
+  "item.firearmy.iron_dust": "Iron Dust",
+  "item.firearmy.gold_dust": "Gold Dust",
+  "item.firearmy.plated_iron_helmet": "Plated Iron Helmet",
+  "item.firearmy.plated_iron_chestplate": "Plated Iron Chest Plate",
+  "item.firearmy.plated_iron_leggings": "Plated Iron Leggings",
+  "item.firearmy.plated_iron_boots": "Plated Iron Boots",
+
+  "gui.firearmy.fireblacksmithbench": "Fire Blacksmith Bench",
+  "gui.firearmy.grindstone": "Grindstone"
+}

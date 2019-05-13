@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "planks",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "firearmy:fire_log"
+    }
+  },
+  "result": {
+    "item": "firearmy:fire_plank",
+    "count": 4
+  }
+}
