@@ -1,0 +1,15 @@
+{
+  "type": "shaped",
+  "pattern": [
+    "ii"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "amount": 1
+  },
+  "cost": 10,
+  "result": {
+    "item": "firearmy:iron_plate",
+    "amount": 1
+  }
+}

@@ -101,6 +101,11 @@ public class EventHandler {
         registry.register(Items.fireSword);
         registry.register(Items.itemIronDust);
         registry.register(Items.itemGoldDust);
+
+        registry.register(Items.armorPlatedIronHelmet);
+        registry.register(Items.armorPlatedIronChestPlate);
+        registry.register(Items.armorPlatedIronLeggings);
+        registry.register(Items.armorPlatedIronBoots);
     }
 
     @SubscribeEvent
@@ -125,6 +130,11 @@ public class EventHandler {
         TheFireArmy.proxy.registerItemRenderer(Items.fireSword, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemIronDust, 0, "inventory");
         TheFireArmy.proxy.registerItemRenderer(Items.itemGoldDust, 0, "inventory");
+
+        TheFireArmy.proxy.registerItemRenderer(Items.armorPlatedIronHelmet, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.armorPlatedIronChestPlate, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.armorPlatedIronLeggings, 0, "inventory");
+        TheFireArmy.proxy.registerItemRenderer(Items.armorPlatedIronBoots, 0, "inventory");
     }
 
     public static void registerOreDic(){

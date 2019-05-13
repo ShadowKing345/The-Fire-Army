@@ -69,7 +69,9 @@ public class BlockFireFurnace extends Block {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(FACING).getIndex();
+        int i = 0;
+        i |= state.getValue(FACING).getIndex();
+        return i;
     }
 
     @Override

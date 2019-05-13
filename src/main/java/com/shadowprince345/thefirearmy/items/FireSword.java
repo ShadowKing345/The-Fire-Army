@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class FireSword extends ItemSword {
     public FireSword() {
-        super(Items.FIRE_WOOD_MATRTIAL);
+        super(Items.FIRE_WOOD_MATERIAL);
 
         setRegistryName("fire_wood_sword");
         setUnlocalizedName("fire_wood_sword");

@@ -22,5 +22,10 @@ item.fire_wood_sword.name=Fire Wood Sword
 item.iron_dust.name=Iron Dust
 item.gold_dust.name=Gold Dust
 
+item.plated_iron_helmet.name=Plated Iron Helmet
+item.plated_iron_chestplate.name=Plated Iron Chest Plate
+item.plated_iron_leggings.name=Plated Iron Leggings
+item.plated_iron_boots.name=Plated Iron Boots
+
 gui.firearmy.fireblacksmithbench.name=Fire Blacksmith Bench
 gui.firearmy.grindstone.name=Grindstone

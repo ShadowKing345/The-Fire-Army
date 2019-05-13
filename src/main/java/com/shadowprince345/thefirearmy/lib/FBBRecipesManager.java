@@ -72,6 +72,26 @@ public class FBBRecipesManager {
                 ItemStack.EMPTY, new ItemStack(net.minecraft.init.Items.STICK), ItemStack.EMPTY,
                 ItemStack.EMPTY, new ItemStack(net.minecraft.init.Blocks.STONE, 1, 6), new ItemStack(net.minecraft.init.Blocks.SANDSTONE, 1, 0),
                 new ItemStack(net.minecraft.init.Blocks.PLANKS, 1, 0), ItemStack.EMPTY, new ItemStack(net.minecraft.init.Blocks.PLANKS, 1, 0));
+
+        add(new ItemStack(Items.armorPlatedIronHelmet), 1600,
+                new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate),
+                new ItemStack(Items.itemIronPlate), ItemStack.EMPTY, new ItemStack(Items.itemIronPlate),
+                ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY);
+
+        add(new ItemStack(Items.armorPlatedIronChestPlate), 1600,
+                new ItemStack(Items.itemIronPlate), ItemStack.EMPTY, new ItemStack(Items.itemIronPlate),
+                new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate),
+                new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate));
+
+        add(new ItemStack(Items.armorPlatedIronLeggings), 1600,
+                new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate), new ItemStack(Items.itemIronPlate),
+                new ItemStack(Items.itemIronPlate), ItemStack.EMPTY, new ItemStack(Items.itemIronPlate),
+                new ItemStack(Items.itemIronPlate), ItemStack.EMPTY, new ItemStack(Items.itemIronPlate));
+
+        add(new ItemStack(Items.armorPlatedIronBoots), 1600,
+                new ItemStack(Items.itemIronPlate), ItemStack.EMPTY, new ItemStack(Items.itemIronPlate),
+                new ItemStack(Items.itemIronPlate), ItemStack.EMPTY, new ItemStack(Items.itemIronPlate),
+                ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY);
     }
 
     @NotNull

@@ -12,16 +12,16 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TEFireFurnace extends TileEntity implements ITickable, ICapabilityProvider {
+public class TEFireFurnace extends TileEntity implements ITickable{
     public ItemStackHandler inventory = new ItemStackHandler(3){
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
@@ -152,6 +152,46 @@ public class TEFireFurnace extends TileEntity implements ITickable, ICapabilityP
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inventory : null;
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(new IItemHandler() {
+            @Override
+            public int getSlots() {
+                return inventory.getSlots();
+            }
+
+            @Nonnull
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return inventory.getStackInSlot(slot);
+            }
+
+            @Nonnull
+            @Override
+            public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+                ItemStack result = stack;
+                switch (slot) {
+                    case 1:
+                        if(FurnaceRecipes.instance().getSmeltingResult(stack) != ItemStack.EMPTY)
+                            result = inventory.insertItem(slot, stack, simulate);
+                        break;
+                    case 0:
+                        if(TileEntityFurnace.isItemFuel(stack))
+                            result = inventory.insertItem(slot, stack, simulate);
+                        break;
+                        default:
+                }
+                return result;
+            }
+
+            @Nonnull
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                return slot == 2 ? inventory.extractItem(slot, amount, simulate): ItemStack.EMPTY;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return inventory.getSlotLimit(slot);
+            }
+        }): null;
     }
 }
