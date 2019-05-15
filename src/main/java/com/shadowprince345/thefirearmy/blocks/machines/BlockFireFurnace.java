@@ -1,112 +1,142 @@
-//package com.shadowprince345.thefirearmy.blocks.machines;
-//
-//import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
-//import com.shadowprince345.thefirearmy.client.GuiHandler;
-//import net.minecraft.block.Block;
-//import net.minecraft.block.BlockHorizontal;
-//import net.minecraft.block.ITileEntityProvider;
-//import net.minecraft.block.SoundType;
-//import net.minecraft.block.material.Material;
-//import net.minecraft.block.properties.PropertyBool;
-//import net.minecraft.block.properties.PropertyDirection;
-//import net.minecraft.block.state.BlockStateContainer;
-//import net.minecraft.block.state.IBlockState;
-//import net.minecraft.entity.EntityLivingBase;
-//import net.minecraft.entity.player.EntityPlayer;
-//import net.minecraft.inventory.InventoryHelper;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.tileentity.TileEntity;
-//import net.minecraft.util.EnumFacing;
-//import net.minecraft.util.EnumHand;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.IBlockAccess;
-//import net.minecraft.world.World;
-//
-//import javax.annotation.Nullable;
-//
-//public class BlockFireFurnace extends Block {
-//    public static final PropertyDirection FACING = BlockHorizontal.FACING;
-//    public static final PropertyBool BURNING = PropertyBool.create("burning");
-//
-//    public BlockFireFurnace() {
-//        super(Material.IRON);
-//        setSoundType(SoundType.STONE);
-//
-//        setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
-//    }
-//
-//    @Override
-//    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-//        if(worldIn.isRemote) return !playerIn.isSneaking();
-//        TileEntity tileEntity = worldIn.getTileEntity(pos);
-//
-//        if(tileEntity instanceof TEFireFurnace)
-//            GuiHandler.open(playerIn, GuiHandler.GUI_FIRE_FURNACE, pos.getX(), pos.getY(), pos.getZ());
-//
-//        return !playerIn.isSneaking();
-//    }
-//
-//    @Override
-//    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-//        return state.getValue(BURNING) ? 10 : 0;
-//    }
-//
-//    @Override
-//    protected BlockStateContainer createBlockState() {
-//        return new BlockStateContainer(this, FACING, BURNING);
-//    }
-//
-//    @Override
-//    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-//        return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-//    }
-//
-//    @Override
-//    public IBlockState getStateFromMeta(int meta) {
-//        EnumFacing facing = EnumFacing.getFront(meta);
-//        if(facing.getAxis() == EnumFacing.Axis.Y) facing = EnumFacing.NORTH;
-//        return getDefaultState().withProperty(FACING, facing);
-//    }
-//
-//    @Override
-//    public int getMetaFromState(IBlockState state) {
-//        int i = 0;
-//        i |= state.getValue(FACING).getIndex();
-//        return i;
-//    }
-//
-//    @Override
-//    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-//        worldIn.setBlockState(pos, getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()));
-//    }
-//
-//    @Nullable
-//    @Override
-//    public TileEntity createTileEntity(World world, IBlockState state) {
-//        return new TEFireFurnace();
-//    }
-//
-//    @Override
-//    public boolean hasTileEntity(IBlockState state) {
-//        return true;
-//    }
-//
-//    @Override
-//    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-//        TEFireFurnace te = (TEFireFurnace) worldIn.getTileEntity(pos);
-//        for(int i = 0; i < te.inventory.getSlots(); i++)
-//            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), te.inventory.getStackInSlot(i));
-//    }
-//
-//    public static void setBurning(boolean value, World world, BlockPos pos){
-//        IBlockState state = world.getBlockState(pos);
-//        TileEntity tileEntity = world.getTileEntity(pos);
-//
-//        world.setBlockState(pos, state.withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, value), 3);
-//
-//        if(tileEntity != null){
-//            tileEntity.validate();
-//            world.setTileEntity(pos, tileEntity);
-//        }
-//    }
-//}
+package com.shadowprince345.thefirearmy.blocks.machines;
+
+import com.shadowprince345.thefirearmy.TheFireArmy;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireFurnace;
+import com.shadowprince345.thefirearmy.init.Blocks;
+import com.shadowprince345.thefirearmy.inventory.ContainerFireFurnace;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IInteractionObject;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
+
+import javax.annotation.Nullable;
+
+public class BlockFireFurnace extends Block {
+    public static final DirectionProperty FACING = BlockHorizontal.HORIZONTAL_FACING;
+    public static final BooleanProperty BURNING = BooleanProperty.create("burning");
+
+    public BlockFireFurnace() {
+        super(Block.Properties.create(Material.ROCK).sound(SoundType.STONE));
+        this.setDefaultState(this.getDefaultState().with(FACING, EnumFacing.NORTH).with(BURNING, false));
+    }
+
+    @Override
+    public boolean onBlockActivated(IBlockState state, World worldIn, BlockPos pos, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float x, float y, float z) {
+        if(worldIn.isRemote) return !playerIn.isSneaking();
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+
+        if(tileEntity instanceof TEFireFurnace) {
+            NetworkHooks.openGui((EntityPlayerMP) playerIn, new BlockFireFurnace.FireFurnace(worldIn, pos), pos);
+        }
+
+        return !playerIn.isSneaking();
+    }
+
+    @Override
+    public int getLightValue(IBlockState state, IWorldReader world, BlockPos pos) {
+        return state.get(BURNING) ? 10 : 0;
+    }
+
+    @Override
+    protected void fillStateContainer(StateContainer.Builder<Block, IBlockState> container) {
+        container.add(FACING, BURNING);
+    }
+
+    @Nullable
+    @Override
+    public IBlockState getStateForPlacement(BlockItemUseContext context) {
+        return getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        worldIn.setBlockState(pos, getDefaultState().with(FACING, placer.getHorizontalFacing().getOpposite()));
+    }
+
+    @Override
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(IBlockState state, IBlockReader world) {
+        return new TEFireFurnace();
+    }
+
+    @Override
+    public void onBlockHarvested(World p_176208_1_, BlockPos p_176208_2_, IBlockState p_176208_3_, EntityPlayer p_176208_4_) {
+        super.onBlockHarvested(p_176208_1_, p_176208_2_, p_176208_3_, p_176208_4_);
+    }
+
+    public static void setBurning(boolean value, World world, BlockPos pos){
+        IBlockState state = world.getBlockState(pos);
+        TileEntity tileEntity = world.getTileEntity(pos);
+
+        world.setBlockState(pos, state.with(FACING, state.get(FACING)).with(BURNING, value), 3);
+
+        if(tileEntity != null){
+            tileEntity.validate();
+            world.setTileEntity(pos, tileEntity);
+        }
+    }
+
+    public static class FireFurnace implements IInteractionObject{
+
+        private final World world;
+        private final BlockPos pos;
+
+        public FireFurnace(World world, BlockPos pos) {
+            this.world = world;
+            this.pos = pos;
+        }
+
+        @Override
+        public Container createContainer(InventoryPlayer inventoryPlayer, EntityPlayer entityPlayer) {
+            return new ContainerFireFurnace(inventoryPlayer, (TEFireFurnace) world.getTileEntity(pos));
+        }
+
+        @Override
+        public String getGuiID() {
+            return TheFireArmy.getModId() + ":fire_furnace";
+        }
+
+        @Override
+        public ITextComponent getName() {
+            return new TextComponentTranslation(Blocks.blockFireFurnace.getTranslationKey());
+        }
+
+        @Override
+        public boolean hasCustomName() {
+            return false;
+        }
+
+        @Nullable
+        @Override
+        public ITextComponent getCustomName() {
+            return null;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "firearmy:fire_plank" }
+    "": { "model": "firearmy:block/fire_plank" }
   }
 }

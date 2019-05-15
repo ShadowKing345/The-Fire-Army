@@ -1,7 +1,5 @@
 {
   "variants": {
-    "normal": [
-      { "model": "firearmy:fire_flower" }
-    ]
+    "": { "model": "firearmy:block/fire_flower" }
   }
 }

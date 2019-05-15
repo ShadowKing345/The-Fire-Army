@@ -1,6 +1,9 @@
 package com.shadowprince345.thefirearmy;
 
+import com.shadowprince345.thefirearmy.client.GuiHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.ExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -16,11 +19,11 @@ public class TheFireArmy {
 
     public TheFireArmy() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.GUIFACTORY, new GuiHandler());
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     public void setup(final FMLCommonSetupEvent event) {
-//        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 //        proxy.setup();
     }
 //

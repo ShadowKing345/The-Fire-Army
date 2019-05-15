@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.api.gui;
+package com.shadowprince345.thefirearmy.lib.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

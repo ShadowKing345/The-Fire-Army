@@ -1,6 +1,6 @@
 //package com.shadowprince345.thefirearmy.blocks.tiles;
 //
-//import com.shadowprince345.thefirearmy.api.recipe.IGrindstoneRecipe;
+//import com.shadowprince345.thefirearmy.lib.recipe.IGrindstoneRecipe;
 //import com.shadowprince345.thefirearmy.blocks.machines.BlockGrindstone;
 //import com.shadowprince345.thefirearmy.lib.GrindstoneRecipeManager;
 //import net.minecraft.item.ItemStack;

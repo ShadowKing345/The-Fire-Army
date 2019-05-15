@@ -1,6 +1,7 @@
 {
   "variants": {
-    "half=top": { "model": "firearmy:fire_slab_upper"},
-    "half=bottom": { "model": "firearmy:fire_slab_lower"}
+    "type=bottom": { "model": "firearmy:block/fire_slab_lower" },
+    "type=top": { "model": "firearmy:block/fire_slab_upper" },
+    "type=double": { "model": "firearmy:block/fire_plank" }
   }
 }

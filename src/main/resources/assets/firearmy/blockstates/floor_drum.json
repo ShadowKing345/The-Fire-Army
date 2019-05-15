@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "firearmy:floor_drum" }
+    "": { "model": "firearmy:block/floor_drum" }
   }
 }

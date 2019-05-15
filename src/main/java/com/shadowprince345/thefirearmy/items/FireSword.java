@@ -15,7 +15,6 @@ import java.util.Random;
 public class FireSword extends ItemSword {
     public FireSword() {
         super(new FIRE_WOOD_MATERIAL(), 3, -2.4f, new Item.Properties().group(ItemGroups.tab));
-
         setRegistryName("fire_wood_sword");
     }
 

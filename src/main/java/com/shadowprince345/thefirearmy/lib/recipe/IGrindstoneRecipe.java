@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.api.recipe;
+package com.shadowprince345.thefirearmy.lib.recipe;
 
 import net.minecraft.item.ItemStack;
 

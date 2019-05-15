@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.creativetab;
+package com.shadowprince345.thefirearmy.inventory.itemgroups;
 
 import com.shadowprince345.thefirearmy.init.Blocks;
 import net.minecraft.item.ItemGroup;
@@ -16,7 +16,7 @@ public class FAItemGroup extends ItemGroup {
     @OnlyIn(Dist.CLIENT)
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(Blocks.blockDev);
+        return new ItemStack(Blocks.blockFireFlower);
     }
 
     @Override

@@ -1,8 +1,18 @@
 {
   "variants": {
-    "check_decay=false,decayable=false": { "model": "firearmy:fire_leaf" },
-    "check_decay=false,decayable=true": { "model": "firearmy:fire_leaf" },
-    "check_decay=true,decayable=false": { "model": "firearmy:fire_leaf" },
-    "check_decay=true,decayable=true": { "model": "firearmy:fire_leaf" }
+    "persistent=false,distance=1": { "model": "firearmy:block/fire_leaf" },
+    "persistent=false,distance=2": { "model": "firearmy:block/fire_leaf" },
+    "persistent=false,distance=3": { "model": "firearmy:block/fire_leaf" },
+    "persistent=false,distance=4": { "model": "firearmy:block/fire_leaf" },
+    "persistent=false,distance=5": { "model": "firearmy:block/fire_leaf" },
+    "persistent=false,distance=6": { "model": "firearmy:block/fire_leaf" },
+    "persistent=false,distance=7": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=1": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=2": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=3": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=4": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=5": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=6": { "model": "firearmy:block/fire_leaf" },
+    "persistent=true,distance=7": { "model": "firearmy:block/fire_leaf" }
   }
 }

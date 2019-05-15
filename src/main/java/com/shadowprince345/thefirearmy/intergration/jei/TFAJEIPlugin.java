@@ -1,7 +1,7 @@
 //package com.shadowprince345.thefirearmy.intergration.jei;
 //
-//import com.shadowprince345.thefirearmy.api.recipe.IFBBRecipe;
-//import com.shadowprince345.thefirearmy.api.recipe.IGrindstoneRecipe;
+//import com.shadowprince345.thefirearmy.lib.recipe.IFBBRecipe;
+//import com.shadowprince345.thefirearmy.lib.recipe.IGrindstoneRecipe;
 //import com.shadowprince345.thefirearmy.client.gui.GuiFBB;
 //import com.shadowprince345.thefirearmy.client.gui.GuiFBF;
 //import com.shadowprince345.thefirearmy.client.gui.GuiFireFurnace;
