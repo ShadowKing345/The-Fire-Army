@@ -1,10 +1,9 @@
-package com.shadowprince345.thefirearmy.lib;
+package com.shadowprince345.thefirearmy.lib.recipe.fbb;
 
 import com.shadowprince345.thefirearmy.TheFireArmy;
 import com.shadowprince345.thefirearmy.init.Blocks;
 import com.shadowprince345.thefirearmy.init.Items;
 import com.shadowprince345.thefirearmy.lib.gui.ItemHandlerCrafting;
-import com.shadowprince345.thefirearmy.lib.recipe.IFBBRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -108,7 +107,7 @@ public class FBBRecipesManager {
             }
         }
 
-        add(new SimpleFBBRecipe(ingredients, output, cost));
+//        add(new ShapedFBBRecipe(ingredients, output, cost));
     }
 
     public void add(ItemStack output, int cost, ItemStack... inputs){
@@ -123,7 +122,7 @@ public class FBBRecipesManager {
             ingredients.set(i, inputs[i]);
         }
 
-        add(new SimpleFBBRecipe(ingredients, output, cost));
+//        add(new ShapedFBBRecipe(ingredients, output, cost));
     }
 
     public IFBBRecipe findRecipe(ItemHandlerCrafting craftingMatrix){
@@ -137,7 +136,7 @@ public class FBBRecipesManager {
         }
 
         for(IFBBRecipe recipe: theList){
-            if(recipe.matches(inputs))
+//            if(recipe.matches(inputs))
                 return recipe;
         }
 
