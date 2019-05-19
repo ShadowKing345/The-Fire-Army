@@ -1,6 +1,6 @@
 package com.shadowprince345.thefirearmy.inventory;
 
-import com.shadowprince345.thefirearmy.lib.recipe.IFBBRecipe;
+import com.shadowprince345.thefirearmy.lib.recipe.fbb.IFBBRecipe;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class BlacksmithBenchCraftResult extends ItemStackHandler {

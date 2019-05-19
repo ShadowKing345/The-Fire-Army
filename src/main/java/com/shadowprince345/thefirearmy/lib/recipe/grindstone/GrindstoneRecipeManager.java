@@ -1,7 +1,6 @@
-package com.shadowprince345.thefirearmy.lib;
+package com.shadowprince345.thefirearmy.lib.recipe.grindstone;
 
 import com.shadowprince345.thefirearmy.init.Items;
-import com.shadowprince345.thefirearmy.lib.recipe.IGrindstoneRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 

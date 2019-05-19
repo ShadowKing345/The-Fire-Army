@@ -56,7 +56,7 @@ public class EventHandler {
     public static void onTileEntityRegister(RegistryEvent.Register<TileEntityType<?>> tileEntityEvent){
         IForgeRegistry<TileEntityType<?>> registry = tileEntityEvent.getRegistry();
         TileEntityTypes.init();
-//        registry.register(TileEntityTypes.TileEntityFireBlacksmithFurnace);
+        registry.register(TileEntityTypes.TileEntityFireBlacksmithFurnace);
         registry.register(TileEntityTypes.TileEntityFireFurnace);
     }
 
@@ -112,7 +112,7 @@ public class EventHandler {
         if(stack.getItem().equals(new ItemBlock(Blocks.blockFireSlab, new Item.Properties())))
             event.setBurnTime(200);
     }
-//
+
 //    @SubscribeEvent
 //    public static void registerRecipes(RegistryEvent.Register<IRecipe> event){
 //        FBBRecipesManager.instance.loadDefault();

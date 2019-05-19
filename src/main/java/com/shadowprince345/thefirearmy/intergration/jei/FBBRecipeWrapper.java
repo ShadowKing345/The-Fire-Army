@@ -1,6 +1,6 @@
 //package com.shadowprince345.thefirearmy.intergration.jei;
 //
-//import com.shadowprince345.thefirearmy.lib.recipe.IFBBRecipe;
+//import com.shadowprince345.thefirearmy.lib.recipe.fbb.IFBBRecipe;
 //import mezz.jei.api.ingredients.IIngredients;
 //import mezz.jei.api.ingredients.VanillaTypes;
 //import mezz.jei.api.recipe.IRecipeWrapper;

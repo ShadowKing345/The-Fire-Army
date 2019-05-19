@@ -2,7 +2,7 @@ package com.shadowprince345.thefirearmy.blocks.tiles;
 
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.init.TileEntityTypes;
-import com.shadowprince345.thefirearmy.lib.recipe.IFBBRecipe;
+import com.shadowprince345.thefirearmy.lib.recipe.fbb.IFBBRecipe;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -25,7 +25,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TEFireBlacksmithFurnace extends TileEntity implements ITickable, IInventory {
+public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
 
     public ItemStackHandler benchInventory = new ItemStackHandler(9);
     public ItemStackHandler furnaceInventory = new ItemStackHandler(3){
@@ -34,6 +34,252 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable, II
             if(slot == 2)
                 return TileEntityFurnace.isItemFuel(stack);
             return true;
+        }
+    };
+    public IInventory FBB = new IInventory() {
+        @Override
+        public int getSizeInventory() {
+            return benchInventory.getSlots();
+        }
+
+        @Override
+        public boolean isEmpty() {
+            for (int i = 0; i < benchInventory.getSlots(); i++)
+                if(!benchInventory.getStackInSlot(i).isEmpty())
+                    return false;
+            return true;
+        }
+
+        public ItemStack getStackInSlot(int i) {
+            return benchInventory.getStackInSlot(i);
+        }
+
+        @Override
+        public ItemStack decrStackSize(int i, int i1) {
+            return benchInventory.extractItem(i, i1, true);
+        }
+
+        @Override
+        public ItemStack removeStackFromSlot(int i) {
+            return benchInventory.extractItem(i, 64, true);
+        }
+
+        @Override
+        public void setInventorySlotContents(int i, ItemStack itemStack) {
+            benchInventory.setStackInSlot(i, itemStack);
+        }
+
+        @Override
+        public int getInventoryStackLimit() {
+            return 64;
+        }
+
+        @Override
+        public void markDirty() {
+        }
+
+        @Override
+        public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
+            return true;
+        }
+
+        @Override
+        public void openInventory(EntityPlayer entityPlayer) {
+
+        }
+
+        @Override
+        public void closeInventory(EntityPlayer entityPlayer) {
+
+        }
+
+        @Override
+        public boolean isItemValidForSlot(int i, ItemStack itemStack) {
+            return benchInventory.isItemValid(i, itemStack);
+        }
+
+        @Override
+        public int getField(int i) {
+            switch (i){
+                case 0:
+                    return totalBurnTime;
+                case 1:
+                    return currentBurnTime;
+                case 2:
+                    return totalProgress;
+                case 3:
+                    return progress;
+                default:
+                    return 0;
+            }
+        }
+
+        @Override
+        public void setField(int i, int i1) {
+            switch (i){
+                case 0:
+                    totalBurnTime = i1;
+                    break;
+                case 1:
+                    currentBurnTime = i1;
+                    break;
+                case 2:
+                    totalProgress = i1;
+                    break;
+                case 3:
+                    progress = i1;
+                    break;
+                default:
+            }
+        }
+
+        @Override
+        public int getFieldCount() {
+            return 4;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public ITextComponent getName() {
+            return new TextComponentTranslation("fire_blacksmith_furnace");
+        }
+
+        @Override
+        public boolean hasCustomName() {
+            return false;
+        }
+
+        @Nullable
+        @Override
+        public ITextComponent getCustomName() {
+            return null;
+        }
+    };
+    public IInventory FBF = new IInventory() {
+        @Override
+        public int getSizeInventory() {
+            return furnaceInventory.getSlots();
+        }
+
+        @Override
+        public boolean isEmpty() {
+            for (int i = 0; i < furnaceInventory.getSlots(); i++)
+                if(!furnaceInventory.getStackInSlot(i).isEmpty())
+                    return false;
+            return true;
+        }
+
+        public ItemStack getStackInSlot(int i) {
+            return furnaceInventory.getStackInSlot(i);
+        }
+
+        @Override
+        public ItemStack decrStackSize(int i, int i1) {
+            return furnaceInventory.extractItem(i, i1, true);
+        }
+
+        @Override
+        public ItemStack removeStackFromSlot(int i) {
+            return furnaceInventory.extractItem(i, 64, true);
+        }
+
+        @Override
+        public void setInventorySlotContents(int i, ItemStack itemStack) {
+            furnaceInventory.setStackInSlot(i, itemStack);
+        }
+
+        @Override
+        public int getInventoryStackLimit() {
+            return 64;
+        }
+
+        @Override
+        public void markDirty() {
+        }
+
+        @Override
+        public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
+            return true;
+        }
+
+        @Override
+        public void openInventory(EntityPlayer entityPlayer) {
+
+        }
+
+        @Override
+        public void closeInventory(EntityPlayer entityPlayer) {
+
+        }
+
+        @Override
+        public boolean isItemValidForSlot(int i, ItemStack itemStack) {
+            return furnaceInventory.isItemValid(i, itemStack);
+        }
+
+        @Override
+        public int getField(int i) {
+            switch (i){
+                case 0:
+                    return totalBurnTime;
+                case 1:
+                    return currentBurnTime;
+                case 2:
+                    return totalProgress;
+                case 3:
+                    return progress;
+                default:
+                    return 0;
+            }
+        }
+
+        @Override
+        public void setField(int i, int i1) {
+            switch (i){
+                case 0:
+                    totalBurnTime = i1;
+                    break;
+                case 1:
+                    currentBurnTime = i1;
+                    break;
+                case 2:
+                    totalProgress = i1;
+                    break;
+                case 3:
+                    progress = i1;
+                    break;
+                default:
+            }
+        }
+
+        @Override
+        public int getFieldCount() {
+            return 4;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public ITextComponent getName() {
+            return new TextComponentTranslation("fire_blacksmith_furnace");
+        }
+
+        @Override
+        public boolean hasCustomName() {
+            return false;
+        }
+
+        @Nullable
+        @Override
+        public ITextComponent getCustomName() {
+            return null;
         }
     };
     public boolean isBurning = false;
@@ -61,7 +307,7 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable, II
         furnaceRecipe = null;
         totalProgress = 0;
 
-        furnaceRecipe = world.getRecipeManager().getRecipe(this, world, VanillaRecipeTypes.SMELTING);
+        furnaceRecipe = world.getRecipeManager().getRecipe(this.FBF, world, VanillaRecipeTypes.SMELTING);
 
         ItemStack fuel = furnaceInventory.getStackInSlot(2);
         if (!fuel.isEmpty()) {
@@ -173,127 +419,9 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable, II
     }
 
     @Override
-    public int getSizeInventory() {
-        return furnaceInventory.getSlots();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        for (int i = 0; i < furnaceInventory.getSlots(); i++)
-            if(!furnaceInventory.getStackInSlot(i).isEmpty())
-                return false;
-        return true;
-    }
-
-    public ItemStack getStackInSlot(int i) {
-        return furnaceInventory.getStackInSlot(i);
-    }
-
-    @Override
-    public ItemStack decrStackSize(int i, int i1) {
-        return furnaceInventory.extractItem(i, i1, true);
-    }
-
-    @Override
-    public ItemStack removeStackFromSlot(int i) {
-        return furnaceInventory.extractItem(i, 64, true);
-    }
-
-    @Override
-    public void setInventorySlotContents(int i, ItemStack itemStack) {
-        furnaceInventory.setStackInSlot(i, itemStack);
-    }
-
-    @Override
-    public int getInventoryStackLimit() {
-        return 64;
-    }
-
-    @Override
     public void markDirty() {
-        if (world != null)
+        if(!world.isRemote)
             world.markChunkDirty(pos, this);
-    }
-
-    @Override
-    public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
-        return true;
-    }
-
-    @Override
-    public void openInventory(EntityPlayer entityPlayer) {
-
-    }
-
-    @Override
-    public void closeInventory(EntityPlayer entityPlayer) {
-
-    }
-
-    @Override
-    public boolean isItemValidForSlot(int i, ItemStack itemStack) {
-        return furnaceInventory.isItemValid(i, itemStack);
-    }
-
-    @Override
-    public int getField(int i) {
-        switch (i){
-            case 0:
-                return totalBurnTime;
-            case 1:
-                return currentBurnTime;
-            case 2:
-                return totalProgress;
-            case 3:
-                return progress;
-            default:
-                return 0;
-        }
-    }
-
-    @Override
-    public void setField(int i, int i1) {
-        switch (i){
-            case 0:
-                totalBurnTime = i1;
-                break;
-            case 1:
-                currentBurnTime = i1;
-                break;
-            case 2:
-                totalProgress = i1;
-                break;
-            case 3:
-                progress = i1;
-                break;
-            default:
-        }
-    }
-
-    @Override
-    public int getFieldCount() {
-        return 4;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public ITextComponent getName() {
-        return new TextComponentTranslation("fire_blacksmith_furnace");
-    }
-
-    @Override
-    public boolean hasCustomName() {
-        return false;
-    }
-
-    @Nullable
-    @Override
-    public ITextComponent getCustomName() {
-        return null;
     }
 
     public IFBBRecipe getCraftingRecipe() {

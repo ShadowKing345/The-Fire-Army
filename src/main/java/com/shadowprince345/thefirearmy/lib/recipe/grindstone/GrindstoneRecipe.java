@@ -1,6 +1,5 @@
-package com.shadowprince345.thefirearmy.lib;
+package com.shadowprince345.thefirearmy.lib.recipe.grindstone;
 
-import com.shadowprince345.thefirearmy.lib.recipe.IGrindstoneRecipe;
 import net.minecraft.item.ItemStack;
 
 public class GrindstoneRecipe implements IGrindstoneRecipe {

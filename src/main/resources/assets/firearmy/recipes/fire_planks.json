@@ -1,14 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "group": "planks",
-  "pattern": [
-    "#"
-  ],
-  "key": {
-    "#": {
+  "ingredients": [
+    {
       "item": "firearmy:fire_log"
     }
-  },
+  ],
   "result": {
     "item": "firearmy:fire_plank",
     "count": 4

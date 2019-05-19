@@ -7,20 +7,16 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:stone",
-      "data": 0
+      "item": "minecraft:stone"
     },
     "F": {
       "item": "firearmy:fire_flower"
     },
     "s": {
-      "item": "firearmy:fire_slab",
-      "data": 0
+      "item": "firearmy:fire_slab"
     }
   },
   "result": {
-    "item": "firearmy:fire_blacksmith_furnace",
-    "count": 1,
-    "data": 0
+    "item": "firearmy:fire_blacksmith_furnace"
   }
 }

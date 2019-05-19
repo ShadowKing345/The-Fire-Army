@@ -1,4 +1,4 @@
-package com.shadowprince345.thefirearmy.lib.recipe;
+package com.shadowprince345.thefirearmy.lib.recipe.grindstone;
 
 import net.minecraft.item.ItemStack;
 
