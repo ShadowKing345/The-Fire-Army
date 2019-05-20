@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "firearmy:fire_slab"
+    },
+    {
+      "item": "firearmy:fire_slab"
+    }
+  ],
+  "result": {
+    "item": "firearmy:fire_plank"
+  }
+}

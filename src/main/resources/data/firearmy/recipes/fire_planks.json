@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "planks",
   "ingredients": [
     {
       "item": "firearmy:fire_log"
