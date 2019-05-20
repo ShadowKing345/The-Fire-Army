@@ -1,0 +1,26 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    "flf",
+    "g#g",
+    "fff"
+  ],
+  "key": {
+    "f": {
+      "item": "firearmy:fire_plank"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "#": {
+      "item": "firearmy:fire_flower"
+    },
+    "g": {
+      "item": "firearmy:gold_plate"
+    }
+  },
+  "result": {
+    "item": "firearmy:floor_drum"
+  },
+  "cost": 600
+}

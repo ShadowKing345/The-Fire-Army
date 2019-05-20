@@ -1,0 +1,23 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    "isi",
+    "ifi",
+    "isi"
+  ],
+  "key": {
+    "i": {
+      "item": "firearmy:iron_plate"
+    },
+    "s": {
+      "item": "minecraft:stone"
+    },
+    "f": {
+      "item": "firearmy:fire_flower"
+    }
+  },
+  "result": {
+    "item": "firearmy:fire_furnace"
+  },
+  "cost": 800
+}

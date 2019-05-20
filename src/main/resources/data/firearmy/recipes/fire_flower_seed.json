@@ -1,0 +1,16 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    "   ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "firearmy:fire_flower"
+    }
+  },
+  "result": {
+    "item": "firearmy:fire_flower_crop"
+  },
+  "cost": 200
+}

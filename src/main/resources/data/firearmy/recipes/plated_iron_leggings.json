@@ -1,0 +1,17 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    "iii",
+    "i i",
+    "i i"
+  ],
+  "key": {
+    "i": {
+      "item": "firearmy:iron_plate"
+    }
+  },
+  "result": {
+    "item": "firearmy:plated_iron_leggings"
+  },
+  "cost": 1600
+}

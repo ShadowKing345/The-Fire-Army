@@ -1,0 +1,15 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    "ii"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "cost": 10,
+  "result": {
+    "item": "firearmy:gold_plate"
+  }
+}

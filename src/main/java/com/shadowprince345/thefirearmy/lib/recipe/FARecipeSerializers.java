@@ -5,5 +5,9 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.RecipeSerializers;
 
 public class FARecipeSerializers {
-    public static final IRecipeSerializer<ShapedFBBRecipe> FBB = RecipeSerializers.register(new ShapedFBBRecipe.Serializer());
+    public static IRecipeSerializer<ShapedFBBRecipe> FBB;
+
+    public static void init() {
+       FBB = RecipeSerializers.register(new ShapedFBBRecipe.Serializer());
+    }
 }

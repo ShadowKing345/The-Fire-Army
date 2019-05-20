@@ -1,6 +1,8 @@
 package com.shadowprince345.thefirearmy;
 
 import com.shadowprince345.thefirearmy.client.GuiHandler;
+import com.shadowprince345.thefirearmy.lib.recipe.FARecipeSerializers;
+import com.shadowprince345.thefirearmy.lib.recipe.FARecipeTypes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -24,7 +26,8 @@ public class TheFireArmy {
     }
 
     public void setup(final FMLCommonSetupEvent event) {
-//        proxy.setup();
+        FARecipeSerializers.init();
+        FARecipeTypes.init();
     }
 //
 //    @Mod.EventHandler

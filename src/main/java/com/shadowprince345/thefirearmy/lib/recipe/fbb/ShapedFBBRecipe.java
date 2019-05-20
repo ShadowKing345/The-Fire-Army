@@ -21,6 +21,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.crafting.RecipeType;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.Map;
 import java.util.Set;
@@ -47,8 +48,8 @@ public class ShapedFBBRecipe implements IFBBRecipe {
 
     @Override
     public boolean matches(IInventory inv, World worldIn) {
-        for(int i  = 0; i <= inv.getWidth() - MAX_W; i++) {
-            for (int j = 0; j <= inv.getHeight() - MAX_H; j++) {
+        for(int i  = 0; i <= inv.getWidth() - MAX_W; ++i) {
+            for (int j = 0; j <= inv.getHeight() - MAX_H; ++j) {
                 if (checkMatch(inv, i, j, true))
                     return true;
                 if (checkMatch(inv, i, j, false))
@@ -66,7 +67,7 @@ public class ShapedFBBRecipe implements IFBBRecipe {
                 Ingredient ingredient = Ingredient.EMPTY;
                 if(k >= 0 && l >= 0 && k < MAX_W && l < MAX_H){
                     if(flag)
-                        ingredient = inputs.get(MAX_W - k - 1 + l * MAX_W);
+                        ingredient = inputs.get(this.MAX_W - k - 1 + l * this.MAX_W);
                     else
                         ingredient = inputs.get(k + l * MAX_W);
                 }
@@ -81,7 +82,7 @@ public class ShapedFBBRecipe implements IFBBRecipe {
 
     @Override
     public ItemStack getCraftingResult(IInventory inv) {
-        return output;
+        return ItemHandlerHelper.copyStackWithSize(output, output.getCount());
     }
 
     @Override
@@ -91,7 +92,7 @@ public class ShapedFBBRecipe implements IFBBRecipe {
 
     @Override
     public ItemStack getRecipeOutput() {
-        return output;
+        return ItemHandlerHelper.copyStackWithSize(output, output.getCount());
     }
 
     @Override
@@ -192,14 +193,14 @@ public class ShapedFBBRecipe implements IFBBRecipe {
         return strings;
     }
 
-    private static NonNullList<Ingredient> deserializeIngredients(String[] pattern, Map<String, Ingredient> keys, int patternWidth, int patternHeigh) {
-        NonNullList<Ingredient> nonNullList = NonNullList.withSize(patternWidth * patternHeigh, Ingredient.EMPTY);
+    private static NonNullList<Ingredient> deserializeIngredients(String[] pattern, Map<String, Ingredient> keys, int patternWidth) {
+        NonNullList<Ingredient> nonNullList = NonNullList.withSize(9, Ingredient.EMPTY);
         Set<String> set = Sets.newHashSet(keys.keySet());
         set.remove(" ");
 
         for (int i = 0; i < pattern.length; ++i) {
             for (int j = 0; j < pattern[i].length(); ++j){
-                String s = pattern[i].substring(j, j + 2);
+                String s = pattern[i].substring(j, j + 1);
                 Ingredient ingredient = keys.get(s);
                 if (ingredient == null)
                     throw new JsonSyntaxException("Pattern references symbol '" + s + "' but it's not defined in the key.");
@@ -223,8 +224,10 @@ public class ShapedFBBRecipe implements IFBBRecipe {
             String[] aString = ShapedFBBRecipe.shrink(ShapedFBBRecipe.patternFromJson(JsonUtils.getJsonArray(json, "pattern")));
             int i = aString[0].length();
             int j = aString.length;
-            NonNullList<Ingredient> nonNullList = ShapedFBBRecipe.deserializeIngredients(aString, map, i, j);
+            NonNullList<Ingredient> nonNullList = ShapedFBBRecipe.deserializeIngredients(aString, map, i);
             ItemStack itemStack = ShapedRecipe.deserializeItem(JsonUtils.getJsonObject(json, "result"));
+            if(!JsonUtils.hasField(json, "cost"))
+                throw new JsonSyntaxException("Invalid json file. 'cost' field is missing.");
             int cost = JsonUtils.getInt(json, "cost");
             return new ShapedFBBRecipe(recipeId, nonNullList, itemStack, cost);
         }

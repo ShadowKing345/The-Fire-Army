@@ -7,11 +7,6 @@ import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
-/**
- * @author shadowprince345
- * The Item handler varient of {@link net.minecraft.inventory.SlotCrafting}
- * The onTake and onCrafting(ItemStack stack) is not complete for later use.
- */
 public class SlotCraftingItemHandler extends SlotItemHandler {
 
     private final EntityPlayer player;
@@ -19,15 +14,6 @@ public class SlotCraftingItemHandler extends SlotItemHandler {
     private final IItemHandler itemHandler;
     private int amountCrafted;
 
-    /**
-     *
-     * @param player The player in question.
-     * @param craftingMatrix The {@link ItemHandlerCrafting} The Crafting grid or Matrix used.
-     * @param itemHandler The main {@link IItemHandler} or output inventory. (Never used but variable is left in case later extension)
-     * @param index Index of the itemHandler.
-     * @param xPosition X position of slot on screen relative to the origin.
-     * @param yPosition Y position of slot on screen relative to the origin.
-     */
     public SlotCraftingItemHandler(EntityPlayer player, ItemHandlerCrafting craftingMatrix, IItemHandler itemHandler, int index, int xPosition, int yPosition) {
         super(itemHandler, index, xPosition, yPosition);
         this.player = player;

@@ -1,0 +1,26 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    " s ",
+    " pS",
+    "o o"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "minecraft:polished_anisite"
+    },
+    "S": {
+      "item": "minecraft:sandstone"
+    },
+    "o": {
+      "item": "minecrat:oak_planks"
+    }
+  },
+  "result": {
+    "item": "firearmy:grindstone"
+  },
+  "cost": 800
+}

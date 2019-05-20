@@ -7,5 +7,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.RecipeType;
 
 public class FARecipeTypes {
-    public static final RecipeType<IRecipe> FIRE_BLACKSMITH_FURNACE = RecipeType.get(new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"), IFBBRecipe.class);
+    public static RecipeType<IRecipe> FIRE_BLACKSMITH_FURNACE;
+
+    public static void init() {
+        FIRE_BLACKSMITH_FURNACE = RecipeType.get(new ResourceLocation(TheFireArmy.getModId(),"fire_blacksmith_furnace"), IFBBRecipe.class);
+    }
 }

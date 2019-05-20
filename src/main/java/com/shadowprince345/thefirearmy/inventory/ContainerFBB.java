@@ -102,7 +102,7 @@ public class ContainerFBB extends Container {
     }
 
     private void slotChangedCraftingGrid(World world, EntityPlayer player, BlacksmithBenchCraftResult craftResult) {
-        if (world.isRemote) return;
+        if (world.isRemote || !furnace.isBurning) return;
 
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         ItemStack output = ItemStack.EMPTY;

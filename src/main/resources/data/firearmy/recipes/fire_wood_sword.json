@@ -1,0 +1,20 @@
+{
+  "type": "firearmy:fire_blacksmith_furnace",
+  "pattern": [
+    " # ",
+    " # ",
+    " s "
+  ],
+  "key": {
+    "#": {
+      "item": "firearmy:fire_plank"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "firearmy:fire_wood_sword"
+  },
+  "cost": 200
+}

@@ -4,12 +4,12 @@
     "ii"
   ],
   "key": {
-    "i": "minecraft:iron_ingot",
-    "amount": 1
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
   },
   "cost": 10,
   "result": {
-    "item": "firearmy:iron_plate",
-    "amount": 1
+    "item": "firearmy:iron_plate"
   }
 }

@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
 
 public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
 
+    private TEFireBlacksmithFurnace instance;
     public ItemStackHandler benchInventory = new ItemStackHandler(9);
     public ItemStackHandler furnaceInventory = new ItemStackHandler(3){
         @Override
@@ -76,6 +77,8 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
 
         @Override
         public void markDirty() {
+            if(!instance.world.isRemote)
+                instance.world.markChunkDirty(instance.pos, instance);
         }
 
         @Override
@@ -158,6 +161,16 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
         public ITextComponent getCustomName() {
             return null;
         }
+
+        @Override
+        public int getHeight() {
+            return 3;
+        }
+
+        @Override
+        public int getWidth() {
+            return 3;
+        }
     };
     public IInventory FBF = new IInventory() {
         @Override
@@ -199,6 +212,8 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
 
         @Override
         public void markDirty() {
+            if(!instance.world.isRemote)
+                instance.world.markChunkDirty(instance.pos, instance);
         }
 
         @Override
@@ -295,6 +310,7 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
 
     public TEFireBlacksmithFurnace() {
         super(TileEntityTypes.TileEntityFireBlacksmithFurnace);
+        this.instance = this;
     }
 
     @Override
@@ -312,7 +328,8 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
         ItemStack fuel = furnaceInventory.getStackInSlot(2);
         if (!fuel.isEmpty()) {
             if (TileEntityFurnace.isItemFuel(fuel) && currentBurnTime <= 0) {
-                totalBurnTime = currentBurnTime = getItemBurnTime(fuel);
+                totalBurnTime = getItemBurnTime(fuel);
+                currentBurnTime += totalBurnTime;
                 if (fuel.getItem() instanceof ItemBucket)
                     world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 1, pos.getZ(), new ItemStack(Items.BUCKET)));
                 fuel.shrink(1);
