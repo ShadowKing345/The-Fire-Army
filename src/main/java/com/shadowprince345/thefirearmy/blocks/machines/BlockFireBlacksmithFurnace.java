@@ -95,7 +95,7 @@ public class BlockFireBlacksmithFurnace extends Block {
 
     @Override
     public int getLightValue(IBlockState state, IWorldReader world, BlockPos pos) {
-        return state.get(BURNING) ? 10 : 0;
+        return state.get(BURNING) ? 5 : 0;
     }
 
     @Override
@@ -121,6 +121,18 @@ public class BlockFireBlacksmithFurnace extends Block {
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         worldIn.setBlockState(pos, getDefaultState().with(FACING, placer.getHorizontalFacing().getOpposite()));
+    }
+
+    @Override
+    public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+        TileEntity te = world.getTileEntity(pos);
+        if(te instanceof TEFireBlacksmithFurnace){
+            for(int i = 0; i < ((TEFireBlacksmithFurnace) te).furnaceInventory.getSlots(); i++)
+                player.dropItem(((TEFireBlacksmithFurnace) te).furnaceInventory.getStackInSlot(i), false);
+            for(int i = 0; i < ((TEFireBlacksmithFurnace) te).benchInventory.getSlots(); i++)
+                player.dropItem(((TEFireBlacksmithFurnace) te).benchInventory.getStackInSlot(i), false);
+        }
+        super.onBlockHarvested(world, pos, state, player);
     }
 
     @Nullable

@@ -19,8 +19,9 @@ public class GuiFBF extends GuiContainer {
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+    public void render(int x, int y, float p_73863_3_) {
+        super.render(x, y, p_73863_3_);
+        this.renderHoveredToolTip(x, y);
     }
 
     @Override

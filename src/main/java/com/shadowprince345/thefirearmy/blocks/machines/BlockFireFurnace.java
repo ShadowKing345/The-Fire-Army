@@ -45,8 +45,8 @@ public class BlockFireFurnace extends Block {
     @Override
     public boolean onBlockActivated(IBlockState state, World worldIn, BlockPos pos, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float x, float y, float z) {
         if(worldIn.isRemote) return !playerIn.isSneaking();
-        TileEntity tileEntity = worldIn.getTileEntity(pos);
 
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
         if(tileEntity instanceof TEFireFurnace) {
             NetworkHooks.openGui((EntityPlayerMP) playerIn, new BlockFireFurnace.FireFurnace(worldIn, pos), pos);
         }
@@ -56,7 +56,7 @@ public class BlockFireFurnace extends Block {
 
     @Override
     public int getLightValue(IBlockState state, IWorldReader world, BlockPos pos) {
-        return state.get(BURNING) ? 10 : 0;
+        return state.get(BURNING) ? 5 : 0;
     }
 
     @Override
@@ -76,6 +76,15 @@ public class BlockFireFurnace extends Block {
     }
 
     @Override
+    public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+        TileEntity te = world.getTileEntity(pos);
+        if(te instanceof TEFireFurnace)
+            for(int i = 0; i < ((TEFireFurnace) te).inventory.getSlots(); i++)
+                player.dropItem(((TEFireFurnace) te).inventory.getStackInSlot(i), false);
+        super.onBlockHarvested(world, pos, state, player);
+    }
+
+    @Override
     public boolean hasTileEntity(IBlockState state) {
         return true;
     }
@@ -84,11 +93,6 @@ public class BlockFireFurnace extends Block {
     @Override
     public TileEntity createTileEntity(IBlockState state, IBlockReader world) {
         return new TEFireFurnace();
-    }
-
-    @Override
-    public void onBlockHarvested(World p_176208_1_, BlockPos p_176208_2_, IBlockState p_176208_3_, EntityPlayer p_176208_4_) {
-        super.onBlockHarvested(p_176208_1_, p_176208_2_, p_176208_3_, p_176208_4_);
     }
 
     public static void setBurning(boolean value, World world, BlockPos pos){

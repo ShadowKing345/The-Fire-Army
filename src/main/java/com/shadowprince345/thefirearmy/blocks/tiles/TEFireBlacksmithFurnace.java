@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.blocks.tiles;
 
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
-import com.shadowprince345.thefirearmy.init.TileEntityTypes;
+import com.shadowprince345.thefirearmy.init.FATileEntityTypes;
 import com.shadowprince345.thefirearmy.lib.recipe.fbb.IFBBRecipe;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +12,8 @@ import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ITickable;
@@ -309,7 +311,7 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
     private FurnaceRecipe furnaceRecipe;
 
     public TEFireBlacksmithFurnace() {
-        super(TileEntityTypes.TileEntityFireBlacksmithFurnace);
+        super(FATileEntityTypes.TileEntityFireBlacksmithFurnace);
         this.instance = this;
     }
 
@@ -396,6 +398,24 @@ public class TEFireBlacksmithFurnace extends TileEntity implements ITickable {
 
     public void decreaseCraftingFuel() {
         currentBurnTime -= craftingRecipe != null ? craftingRecipe.getCost() : 0;
+    }
+
+    @Nullable
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setTag("Items", pkt.getNbtCompound().getList("benchInventory", Constants.NBT.TAG_COMPOUND));
+        benchInventory.deserializeNBT(tag);
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return write(new NBTTagCompound());
     }
 
     @Override

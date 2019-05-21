@@ -1,4 +1,4 @@
-//package com.shadowprince345.thefirearmy.blocks.tiles;
+//package com.shadowprince345.thefirearmy.block.tiles;
 //
 //import net.minecraft.tileentity.TileEntity;
 //import net.minecraft.util.ITickable;

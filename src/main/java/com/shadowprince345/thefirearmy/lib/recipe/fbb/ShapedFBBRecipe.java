@@ -227,7 +227,7 @@ public class ShapedFBBRecipe implements IFBBRecipe {
             NonNullList<Ingredient> nonNullList = ShapedFBBRecipe.deserializeIngredients(aString, map, i);
             ItemStack itemStack = ShapedRecipe.deserializeItem(JsonUtils.getJsonObject(json, "result"));
             if(!JsonUtils.hasField(json, "cost"))
-                throw new JsonSyntaxException("Invalid json file. 'cost' field is missing.");
+                throw new JsonSyntaxException("Invalid json recipe. 'cost' field is missing.");
             int cost = JsonUtils.getInt(json, "cost");
             return new ShapedFBBRecipe(recipeId, nonNullList, itemStack, cost);
         }

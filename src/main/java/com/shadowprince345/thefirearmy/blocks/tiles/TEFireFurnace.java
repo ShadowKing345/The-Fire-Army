@@ -1,7 +1,7 @@
 package com.shadowprince345.thefirearmy.blocks.tiles;
 
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireFurnace;
-import com.shadowprince345.thefirearmy.init.TileEntityTypes;
+import com.shadowprince345.thefirearmy.init.FATileEntityTypes;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -260,7 +260,7 @@ public class TEFireFurnace extends TileEntity implements IInventory, IRecipeHold
     }
 
     public TEFireFurnace(){
-        super(TileEntityTypes.TileEntityFireFurnace);
+        super(FATileEntityTypes.TileEntityFireFurnace);
     }
 
     @Override
