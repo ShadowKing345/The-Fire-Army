@@ -1,7 +1,7 @@
 {
   "parent": "block/cube_column",
   "textures": {
-    "end": "firearmy:blocks/fire_log_end",
-    "side": "firearmy:blocks/fire_log"
+    "end": "firearmy:block/fire_log_end",
+    "side": "firearmy:block/fire_log"
   }
 }

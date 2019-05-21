@@ -1,10 +1,10 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"1": "firearmy:blocks/floor_drum_top",
-		"2": "firearmy:blocks/fire_plank",
-		"3": "firearmy:blocks/floor_drum_side",
-		"particle": "firearmy:blocks/fire_plank"
+		"1": "firearmy:block/floor_drum_top",
+		"2": "firearmy:block/fire_plank",
+		"3": "firearmy:block/floor_drum_side",
+		"particle": "firearmy:block/fire_plank"
 	},
 	"elements": [
 		{

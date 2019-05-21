@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "north": "firearmy:blocks/fire_furnace_front_off",
-    "east": "firearmy:blocks/fire_furnace_side",
-    "west": "firearmy:blocks/fire_furnace_side",
-    "south": "firearmy:blocks/fire_furnace_side",
-    "up": "firearmy:blocks/fire_furnace_top",
-    "down": "firearmy:blocks/fire_furnace_bottom",
-    "particle": "firearmy:blocks/fire_furnace_side"
+    "north": "firearmy:block/fire_furnace_front_off",
+    "east": "firearmy:block/fire_furnace_side",
+    "west": "firearmy:block/fire_furnace_side",
+    "south": "firearmy:block/fire_furnace_side",
+    "up": "firearmy:block/fire_furnace_top",
+    "down": "firearmy:block/fire_furnace_bottom",
+    "particle": "firearmy:block/fire_furnace_side"
   }
 }

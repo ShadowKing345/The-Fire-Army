@@ -1,11 +1,11 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"0": "firearmy:blocks/fire_plank",
-		"1": "firearmy:blocks/fire_blacksmith_furnace_top",
-		"2": "firearmy:blocks/fire_furnace_front_off",
-		"3": "firearmy:blocks/fire_furnace_side",
-		"particle": "firearmy:blocks/fire_plank"
+		"0": "firearmy:block/fire_plank",
+		"1": "firearmy:block/fire_blacksmith_furnace_top",
+		"2": "firearmy:block/fire_furnace_front_off",
+		"3": "firearmy:block/fire_furnace_side",
+		"particle": "firearmy:block/fire_plank"
 	},
 	"elements": [
 		{

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "firearmy:items/plated_iron_chestplate"
+    "layer0": "firearmy:item/plated_iron_chestplate"
   }
 }

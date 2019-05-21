@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "firearmy:blocks/fire_flower_crop4"
+    "cross": "firearmy:block/fire_flower_crop4"
   }
 }

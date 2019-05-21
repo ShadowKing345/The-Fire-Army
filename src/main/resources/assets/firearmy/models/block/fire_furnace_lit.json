@@ -1,6 +1,6 @@
 {
   "parent": "firearmy:block/fire_furnace",
   "textures": {
-    "north": "firearmy:blocks/fire_furnace_front_on"
+    "north": "firearmy:block/fire_furnace_front_on"
   }
 }
