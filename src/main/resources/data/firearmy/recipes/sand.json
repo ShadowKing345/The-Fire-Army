@@ -1,0 +1,12 @@
+{
+  "type": "firearmy:grindstone",
+  "ingredient": {
+    "item": "minecraft:gravel"
+  },
+  "result": {
+    "item": "firearmy:sand",
+    "count": 2
+  },
+  "cost": 1,
+  "time": 200
+}

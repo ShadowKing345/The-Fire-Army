@@ -1,12 +1,8 @@
 {
   "variants": {
-    "active=false,facing=north": { "model": "firearmy:block/grindstone" },
-    "active=false,facing=south": { "model": "firearmy:block/grindstone" },
-    "active=false,facing=east": { "model": "firearmy:block/grindstone" },
-    "active=false,facing=west": { "model": "firearmy:block/grindstone" },
-    "active=true,facing=north": { "model": "firearmy:block/grindstone" },
-    "active=true,facing=south": { "model": "firearmy:block/grindstone" },
-    "active=true,facing=east": { "model": "firearmy:block/grindstone" },
-    "active=true,facing=west": { "model": "firearmy:block/grindstone" }
+    "facing=north": { "model": "firearmy:block/grindstone" },
+    "facing=south": { "model": "firearmy:block/grindstone" },
+    "facing=east": { "model": "firearmy:block/grindstone" },
+    "facing=west": { "model": "firearmy:block/grindstone" }
   }
 }

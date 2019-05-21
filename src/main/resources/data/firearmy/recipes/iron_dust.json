@@ -1,0 +1,11 @@
+{
+  "type": "firearmy:grindstone",
+  "ingredient": {
+    "item": "minecraft:iron_ore"
+  },
+  "result": {
+    "item": "firearmy:iron_dust"
+  },
+  "cost": 2,
+  "time": 100
+}

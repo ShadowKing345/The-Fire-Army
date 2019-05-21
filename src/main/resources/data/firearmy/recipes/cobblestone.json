@@ -1,0 +1,11 @@
+{
+  "type": "firearmy:grindstone",
+  "ingredient": {
+    "item": "minecraft:stone"
+  },
+  "result": {
+    "item": "firearmy:cobblestone"
+  },
+  "cost": 1,
+  "time": 200
+}

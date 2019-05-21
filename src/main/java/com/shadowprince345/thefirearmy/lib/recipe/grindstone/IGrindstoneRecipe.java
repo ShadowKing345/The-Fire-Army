@@ -1,11 +1,8 @@
 package com.shadowprince345.thefirearmy.lib.recipe.grindstone;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 
-public interface IGrindstoneRecipe {
-    ItemStack getInput();
-    ItemStack getOutput(ItemStack input);
+public interface IGrindstoneRecipe extends IRecipe {
     int getCost();
     int getTime();
-    boolean matches(ItemStack input);
 }

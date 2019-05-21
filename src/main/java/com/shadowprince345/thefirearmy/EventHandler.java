@@ -1,9 +1,9 @@
 package com.shadowprince345.thefirearmy;
 
 import com.shadowprince345.thefirearmy.init.Blocks;
+import com.shadowprince345.thefirearmy.init.FATileEntityTypes;
 import com.shadowprince345.thefirearmy.init.ItemGroups;
 import com.shadowprince345.thefirearmy.init.Items;
-import com.shadowprince345.thefirearmy.init.TileEntityTypes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -49,15 +49,16 @@ public class EventHandler {
         registryBlock.register(Blocks.blockFloorDrum);
         registryBlock.register(Blocks.blockFireFlowerCrop);
         registryBlock.register(Blocks.blockFireFurnace);
-//        registryBlock.register(Blocks.blockGrindstone);
+        registryBlock.register(Blocks.blockGrindstone);
     }
 
     @SubscribeEvent
     public static void onTileEntityRegister(RegistryEvent.Register<TileEntityType<?>> tileEntityEvent){
         IForgeRegistry<TileEntityType<?>> registry = tileEntityEvent.getRegistry();
-        TileEntityTypes.init();
-        registry.register(TileEntityTypes.TileEntityFireBlacksmithFurnace);
-        registry.register(TileEntityTypes.TileEntityFireFurnace);
+        FATileEntityTypes.init();
+        registry.register(FATileEntityTypes.TileEntityFireBlacksmithFurnace);
+        registry.register(FATileEntityTypes.TileEntityFireFurnace);
+        registry.register(FATileEntityTypes.TileEntityGrindstone);
     }
 
     @SubscribeEvent
@@ -76,7 +77,7 @@ public class EventHandler {
         registry.register(withName(Blocks.blockFloorDrum));
         registry.register(withName(Blocks.blockFireFlowerCrop));
         registry.register(withName(Blocks.blockFireFurnace));
-//        registry.register(withName(Blocks.blockGrindstone));
+        registry.register(withName(Blocks.blockGrindstone));
 
         registry.register(Items.itemDev);
         registry.register(Items.itemGoldPlate);

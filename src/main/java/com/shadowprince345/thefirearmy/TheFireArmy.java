@@ -1,12 +1,18 @@
 package com.shadowprince345.thefirearmy;
 
+import com.shadowprince345.thefirearmy.blocks.tiles.TEFireBlacksmithFurnace;
+import com.shadowprince345.thefirearmy.blocks.tiles.TEGrindstone;
 import com.shadowprince345.thefirearmy.client.GuiHandler;
+import com.shadowprince345.thefirearmy.client.ter.RenderFireBlackSmithFurnace;
+import com.shadowprince345.thefirearmy.client.ter.RenderGrindstone;
 import com.shadowprince345.thefirearmy.lib.recipe.FARecipeSerializers;
 import com.shadowprince345.thefirearmy.lib.recipe.FARecipeTypes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +27,7 @@ public class TheFireArmy {
 
     public TheFireArmy() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.GUIFACTORY, new GuiHandler());
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -29,11 +36,11 @@ public class TheFireArmy {
         FARecipeSerializers.init();
         FARecipeTypes.init();
     }
-//
-//    @Mod.EventHandler
-//    public static void init(FMLInitializationEvent e){
-//        EventHandler.registerOreDic();
-//    }
+
+    public void doClientStuff(final FMLClientSetupEvent event){
+        ClientRegistry.bindTileEntitySpecialRenderer(TEFireBlacksmithFurnace.class, new RenderFireBlackSmithFurnace());
+        ClientRegistry.bindTileEntitySpecialRenderer(TEGrindstone.class, new RenderGrindstone());
+    }
 
     public static String getModId() {
         return MOD_ID;

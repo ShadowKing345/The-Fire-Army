@@ -10,6 +10,7 @@ import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireLog;
 import com.shadowprince345.thefirearmy.blocks.firetree.BlockFireSapling;
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireBlacksmithFurnace;
 import com.shadowprince345.thefirearmy.blocks.machines.BlockFireFurnace;
+import com.shadowprince345.thefirearmy.blocks.machines.BlockGrindstone;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.SoundType;
@@ -28,5 +29,5 @@ public class Blocks {
     public static BlockFloorDrum blockFloorDrum = (BlockFloorDrum) EventHandler.withName(new BlockFloorDrum(),"floor_drum");
     public static BlockFireFlowerCrop blockFireFlowerCrop = (BlockFireFlowerCrop) EventHandler.withName(new BlockFireFlowerCrop(), "fire_flower_crop");
     public static BlockFireFurnace blockFireFurnace = (BlockFireFurnace) EventHandler.withName(new BlockFireFurnace(),"fire_furnace");
-//    public static BlockGrindstone blockGrindstone = (BlockGrindstone) EventHandler.withName(new BlockGrindstone(), "grindstone");
+    public static BlockGrindstone blockGrindstone = (BlockGrindstone) EventHandler.withName(new BlockGrindstone(), "grindstone");
 }
